@@ -61,7 +61,7 @@ public class WeatherApiConnection {
         /*
          * method to get the city name
          */
-        return null;
+        return this.cityName;
     }
 
 }
