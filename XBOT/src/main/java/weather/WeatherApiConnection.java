@@ -7,6 +7,12 @@ public class WeatherApiConnection {
 
     private String cityName; // Name of the city
 
+    WeatherApiConnection(String cityName, int days) 
+    {
+        this.cityName = cityName;
+        this.days = days;
+    }
+
     private HttpURLConnection connect() throws Exception {
         /*
          * method to establish connection with weather API it take cityName as Argument
