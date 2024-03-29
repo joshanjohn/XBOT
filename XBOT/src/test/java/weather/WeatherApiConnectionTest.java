@@ -43,4 +43,16 @@ class WeatherApiConnectionTest {
 		}
 	}
 
+	@Test
+	public void testGetCityName() 
+	{
+        String cityName = "Dublin";
+        int days = 3;
+        WeatherApiConnection weatherApiConnection = new WeatherApiConnection(cityName, days);
+        
+        String result = weatherApiConnection.getCityName();
+        
+        assertEquals(cityName, result);
+    }
+
 }
