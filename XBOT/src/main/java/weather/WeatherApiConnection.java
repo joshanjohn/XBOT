@@ -16,4 +16,12 @@ public class WeatherApiConnection {
         return null;
     }
 
+    public String getCityName()
+    {
+        /*
+         * method to get the city name
+         */
+        return null;
+    }
+
 }
