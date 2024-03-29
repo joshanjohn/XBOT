@@ -1,6 +1,7 @@
 package weather;
 
 import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class WeatherApiConnection {
     private int days; // number of days
@@ -25,7 +26,29 @@ public class WeatherApiConnection {
          * and connect with API. method return an HttpURLConnection object
          */
 
-        return null;
+         URL url = new URL(BASE_URL + API_KEY + "&q=" + this.cityName + "&days=" + this.days); // Create the URL for the API request
+
+         // Open connection
+         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+ 
+         // Set request method
+         connection.setRequestMethod("GET");
+ 
+         // connecting API
+         connection.connect();
+ 
+         // Get response code
+         int responseCode = connection.getResponseCode();
+ 
+         if (responseCode != HttpURLConnection.HTTP_OK) {
+             /*
+              * checking if the respose code is not ok if so it throw an RuntimeException
+              * checking is done using the response Code. (200 means connected sucessfully)
+              */
+             throw new RuntimeException("Failed to retrieve weather data: HTTP error code " + responseCode);
+         }
+ 
+         return connection;
     }
 
     public String getCityName()
