@@ -20,6 +20,11 @@ public class WeatherApiConnection {
         this.days = days;
     }
 
+    // Constructor for WeatherApiConnection without city name
+    WeatherApiConnection(int days) {
+        this.days = days;
+    }
+
     public HttpURLConnection connect() throws Exception {
         /*
          * method to establish connection with weather API it take cityName as Argument
