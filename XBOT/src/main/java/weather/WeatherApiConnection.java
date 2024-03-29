@@ -6,7 +6,7 @@ import java.net.URL;
 public class WeatherApiConnection {
     private int days; // number of days
 
-    private String cityName; // Name of the city
+    private String cityName = "Dublin"; // Name of the city
 
     // API KEY for weather
     private static final String API_KEY = "dc63076a45354945b01205300241503";
