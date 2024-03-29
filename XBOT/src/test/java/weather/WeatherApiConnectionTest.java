@@ -2,6 +2,8 @@ package weather;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.net.HttpURLConnection;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -27,8 +29,18 @@ class WeatherApiConnectionTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testConnect() {
+		WeatherApiConnection weather = new WeatherApiConnection("London", 3);
+		try {
+			// testing if the connect method
+			assertNotNull(weather.connect());
+
+			// testing if the responce status is ok (means 200)
+			assertEquals(HttpURLConnection.HTTP_OK, weather.connect().getResponseCode(),
+					"Response code should be HTTP_OK");
+		} catch (Exception e) {
+			fail("test connect failed");
+		}
 	}
 
 }
