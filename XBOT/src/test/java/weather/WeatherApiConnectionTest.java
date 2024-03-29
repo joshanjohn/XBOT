@@ -43,16 +43,29 @@ class WeatherApiConnectionTest {
 		}
 	}
 
+	/*
+	 * method to test getCityName method
+	 */
 	@Test
 	public void testGetCityName() 
 	{
         String cityName = "Dublin";
         int days = 3;
-        WeatherApiConnection weatherApiConnection = new WeatherApiConnection(cityName, days);
-        
-        String result = weatherApiConnection.getCityName();
-        
-        assertEquals(cityName, result);
+		//instance with city name
+        WeatherApiConnection weatherApiConnection1 = new WeatherApiConnection(cityName, days);
+		//instance without city name
+		WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection(days);
+
+		//test 1
+        String result1 = weatherApiConnection1.getCityName();
+        assertEquals(cityName, result1);
+
+		//test 2
+		String result2 = weatherApiConnection2.getCityName();
+		assertEquals(cityName, result2);
     }
 
+	
 }
+
+
