@@ -13,6 +13,12 @@ public class WeatherApiConnection {
     // API URL without key and parameters
     private static final String BASE_URL = "https://api.weatherapi.com/v1/forecast.json?key=";
 
+    // Constructor for WeatherApiConnection
+    WeatherApiConnection(String cityName, int days) {
+        this.cityName = cityName;
+        this.days = days;
+    }
+
     private HttpURLConnection connect() throws Exception {
         /*
          * method to establish connection with weather API it take cityName as Argument
