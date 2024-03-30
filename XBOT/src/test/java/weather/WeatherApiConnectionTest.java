@@ -28,6 +28,9 @@ class WeatherApiConnectionTest {
 	void tearDown() throws Exception {
 	}
 
+	/*
+	 * method to test connect method
+	 */
 	@Test
 	void testConnect() {
 		WeatherApiConnection weather = new WeatherApiConnection("London", 3);
@@ -47,26 +50,22 @@ class WeatherApiConnectionTest {
 	 * method to test getCityName method
 	 */
 	@Test
-	public void testGetCityName() 
-	{
-        String cityName1 = "Dublin";
+	public void testGetCityName() {
+		String cityName1 = "Dublin";
 		String cityName2 = "";
-        int days = 3;
-		//instance with city name
-        WeatherApiConnection weatherApiConnection1 = new WeatherApiConnection(cityName1, days);
-		//instance without city name
-		WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection(cityName2,days);
+		int days = 3;
+		// instance with city name
+		WeatherApiConnection weatherApiConnection1 = new WeatherApiConnection(cityName1, days);
+		// instance without city name
+		WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection(cityName2, days);
 
-		//test 1
-        String result1 = weatherApiConnection1.getCityName();
-        assertEquals(cityName1, result1);
+		// test 1
+		String result1 = weatherApiConnection1.getCityName();
+		assertEquals(cityName1, result1);
 
-		//test 2
+		// test 2
 		String result2 = weatherApiConnection2.getCityName();
 		assertEquals(cityName2, result2);
-    }
+	}
 
-	
 }
-
-
