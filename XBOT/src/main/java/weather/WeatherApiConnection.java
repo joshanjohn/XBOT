@@ -68,7 +68,8 @@ public class WeatherApiConnection {
 		 * 
 		 */
 
-         
+        // getting the HttpURLConnection
+         HttpURLConnection connection = this.connect();
 
     }
 }
