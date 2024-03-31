@@ -16,7 +16,9 @@ public class WeatherForecastModel{
 		 * Method to get the forecast data for a specific day. The index use an index
 		 * value to specify the day
 		 */
-		return null;
+		JSONArray forecastDays = forecastData.getJSONObject("forecast").getJSONArray("forecastday");
+		JSONObject forecastDayJson = forecastDays.getJSONObject(index); // getting JSON for specific index
+		return new ForecastDayModel(forecastDayJson);
 	}
 
 }
