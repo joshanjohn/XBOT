@@ -71,11 +71,14 @@ public class WeatherApiConnection {
 		 */
 
         // getting the HttpURLConnection
-         HttpURLConnection connection = this.connect();
+        HttpURLConnection connection = this.connect();
 
         // reading the inputs from the connection
-         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-         
+        // declaring an String builder
+		StringBuilder stringBuilder = new StringBuilder();
+
+        
     }
 }
