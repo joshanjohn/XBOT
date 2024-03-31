@@ -85,5 +85,7 @@ public class WeatherApiConnection {
 			stringBuilder.append(line);
 		}
 		reader.close();
+
+        return null;
     }
 }
