@@ -85,6 +85,6 @@ public class WeatherApiConnection {
 		}
 		reader.close();
 
-        return null;
+        return stringBuilder.toString();
     }
 }

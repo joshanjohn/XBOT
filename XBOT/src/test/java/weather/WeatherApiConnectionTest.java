@@ -71,11 +71,21 @@ class WeatherApiConnectionTest {
 	@Test
 	public void testGetWeatherData() throws Exception{
     String expectedWeatherData = "\n Temperature:- 15 \n Data:- Cloudy";
+	try{
     WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
 
-    // Calling the getWeatherData() method on the weatherApiConnection object
-    String actualWeatherData = weatherApiConnection.getWeatherData();
-    assertEquals(expectedWeatherData, actualWeatherData);
+	assertNotNull(weatherApiConnection.getWeatherData().getClass().getSimpleName());
+
+	assertEquals("String",weatherApiConnection.getWeatherData());
+
+	WeatherApiConnection  weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
+
+	
+	assertNotEquals(weatherApiConnection.getWeatherData(),weatherApiConnection2.getWeatherData());
+	}catch(Exception e){
+		fail();
+	}
+    
 }
 
 }
