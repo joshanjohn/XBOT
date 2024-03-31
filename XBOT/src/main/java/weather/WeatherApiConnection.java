@@ -59,4 +59,16 @@ public class WeatherApiConnection {
         return this.cityName;
     }
 
+    public String getWeatherData() throws Exception
+    {
+
+        /*
+		 * Method to return the weather JSON information method takes city name as
+		 * argument
+		 * 
+		 */
+
+         
+
+    }
 }
