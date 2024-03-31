@@ -17,7 +17,7 @@ public class WeatherApiConnection {
     private static final String BASE_URL = "https://api.weatherapi.com/v1/forecast.json?key=";
 
     // Constructor for WeatherApiConnection
-    WeatherApiConnection(String cityName, int days) {
+    public WeatherApiConnection(String cityName, int days) {
         this.cityName = cityName;
         this.days = days;
     }
@@ -88,5 +88,13 @@ public class WeatherApiConnection {
         return stringBuilder.toString();
     }
 
+    public String getWeatherCondition()
+	{
+		/*
+		 * method to return the weather condition as String from the JSON object in
+		 * forecastDayJson
+		 */
+		return null;
+	}
 
 }

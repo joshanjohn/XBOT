@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import weather.WeatherApiConnection;
+
 class ForecastDayModelTest {
 
 	@BeforeAll
@@ -33,6 +35,18 @@ class ForecastDayModelTest {
 
 	@Test
 	public void testGetWeatherCondition(){
-		
+		WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
+		try{
+
+			assertNotNull(weatherApiConnection.getWeatherCondition());
+
+			assertEquals("String", weatherApiConnection.getWeatherCondition().getClass().getSimpleName());
+
+			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
+
+			assertNotEquals(weatherApiConnection.getWeatherCondition(), weatherApiConnection2.getWeatherCondition());
+		}catch(Exception e){
+			fail("Fail to parse json string");
+		}
 	}
 }
