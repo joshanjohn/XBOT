@@ -31,4 +31,8 @@ class ForecastDayModelTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testGetWeatherCondition(){
+		
+	}
 }

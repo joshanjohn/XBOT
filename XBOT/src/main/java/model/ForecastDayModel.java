@@ -11,7 +11,8 @@ public class ForecastDayModel {
 		this.forecastDayJson = forecastDayJson;
 	}
 
-	public String getWeatherCondition(){
+	public String getWeatherCondition()
+	{
 		/*
 		 * method to return the weather condition as String from the JSON object in
 		 * forecastDayJson
