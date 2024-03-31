@@ -41,7 +41,7 @@ class ForecastDayModelTest {
         forecastDayJson2.put("date", JSONObject.NULL);
 
         ForecastDayModel forecastDayModel2 = new ForecastDayModel(forecastDayJson2);
-        assertNotNull(forecastDayModel2.getDate());
+        assertNull(forecastDayModel2.getDate());
 
         // Test case 3: Empty date
         JSONObject forecastDayJson3 = new JSONObject();

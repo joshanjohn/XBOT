@@ -15,7 +15,9 @@ public class ForecastDayModel {
 		/*
 		 * method to return the date from the JSON object in forecastDayJson
 		 */
-		return null;
-
+		if (forecastDayJson.isNull("date")) {
+			return null;
+		}
+		return forecastDayJson.getString("date");
 	}
 }
