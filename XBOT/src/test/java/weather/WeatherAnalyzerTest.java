@@ -2,6 +2,8 @@ package weather;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,9 +28,26 @@ class WeatherAnalyzerTest {
 	void tearDown() throws Exception {
 	}
 
+	/*
+	 * test for getWeatherForecastModel method
+	 */
 	@Test
 	void testGetWeatherForecastModel() {
-		fail("Not yet implemented");
+		try {
+			WeatherAnalyzer analyzer = new WeatherAnalyzer("London", 3);
+
+			// test for null checking
+			assertNotNull(analyzer.getWeatherForecastModel());
+
+			// testing for getting sub methods (getDate method)
+			String expedDateToday = LocalDate.now().toString(); // expected todays Date
+			String actualDateToday = analyzer.getWeatherForecastModel().getForecastDay(0).getDate(); // actual todayda
+			// date from API
+			assertEquals(expedDateToday, actualDateToday);
+
+		} catch (Exception e) {
+			fail("getWeatherForecastModel method failed");
+		}
 	}
 
 }
