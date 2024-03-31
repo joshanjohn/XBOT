@@ -1,9 +1,12 @@
 package weather;
 
 public class WeatherAnalyzer {
+	private final WeatherApiConnection weatherApiConnection;
 
-	public WeatherAnalyzer() {
-		// TODO Auto-generated constructor stub
+	// Constructor to initialize WeatherAnalyzer with a WeatherApiConnection
+	// instance
+	public WeatherAnalyzer(String cityName, int days) {
+		this.weatherApiConnection = new WeatherApiConnection(cityName, days);
 	}
 
 }
