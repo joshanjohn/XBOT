@@ -61,7 +61,7 @@ public class WeatherApiConnection {
         return this.cityName;
     }
 
-    public String getWeatherData() throws Exception
+    public  String getWeatherData() throws Exception
     {
 
         /*
