@@ -79,6 +79,11 @@ public class WeatherApiConnection {
         // declaring an String builder
 		StringBuilder stringBuilder = new StringBuilder();
 
-        
+
+        String line;
+		while ((line = reader.readLine()) != null) {
+			stringBuilder.append(line);
+		}
+		reader.close();
     }
 }
