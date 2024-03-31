@@ -20,4 +20,11 @@ public class ForecastDayModel {
 		}
 		return forecastDayJson.getString("date");
 	}
+
+	public double getWind(){
+		/*
+		 * method to return the wind speed in kph.
+		 */
+		return 0.0;
+	}
 }
