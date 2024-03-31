@@ -20,6 +20,9 @@ public class WeatherAnalyzer {
 		/*
 		 * Method to return the weather forecast model
 		 */
-		return null;
+		// Get weather data from the API connection
+		String weatherData = weatherApiConnection.getWeatherData();
+		// Create a new WeatherForecastModel instance using the retrieved weather data
+		return new WeatherForecastModel(weatherData);
 	}
 }
