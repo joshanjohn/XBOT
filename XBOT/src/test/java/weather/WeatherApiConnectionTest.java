@@ -74,9 +74,9 @@ class WeatherApiConnectionTest {
 	try{
     WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
 
-	assertNotNull(weatherApiConnection.getWeatherData().getClass().getSimpleName());
+	assertNotNull(weatherApiConnection.getWeatherData());
 
-	assertEquals("String",weatherApiConnection.getWeatherData());
+	assertEquals("String",weatherApiConnection.getWeatherData().getClass().getSimpleName());
 
 	WeatherApiConnection  weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
 
