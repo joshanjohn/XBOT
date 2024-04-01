@@ -16,7 +16,6 @@ class ForecastDayModelTest {
 	}
 
 	@AfterAll
-	static void tearDownAfterClass() throws Exception {
 	}
 
 	@BeforeEach
@@ -68,6 +67,23 @@ class ForecastDayModelTest {
             double actualWindSpeed = instance.getWind();
             assertEquals(expectedWindSpeed, actualWindSpeed, 0.01);
         }
+    @Test
+    public void testGetMostFeelsLikeTemperature() {
+        // Mock forecastDayJson for testing
+        JSONObject forecastDayJson = new JSONObject(
+                "{\"hour\": [{\"feelslike_c\": 20.0}, {\"feelslike_c\": 22.5}, {\"feelslike_c\": 19.8}]}");
+
+        // Instantiate ForecastDayModel object
+        ForecastDayModel forecastDayModel = new ForecastDayModel(forecastDayJson);
+
+        // Expected maximum feels like temperature
+        double expected = 22.5;
+
+        // Test multiple cases using a for loop
+        assertEquals(expected, forecastDayModel.getMostFeelsLikeTemperature());
+
+        // test for not null
+        assertNotEquals(expected, forecastDayJson);
     }
 
 }
