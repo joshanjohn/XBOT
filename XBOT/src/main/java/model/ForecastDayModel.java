@@ -10,4 +10,16 @@ public class ForecastDayModel {
 	public ForecastDayModel(JSONObject forecastDayJson) {
 		this.forecastDayJson = forecastDayJson;
 	}
+
+	
+	public String getDate() {
+		/*
+		 * method to return the date from the JSON object in forecastDayJson
+		 */
+		if (forecastDayJson.isNull("date")) {
+			return null;
+		}
+		return forecastDayJson.getString("date");
+	}
+
 }
