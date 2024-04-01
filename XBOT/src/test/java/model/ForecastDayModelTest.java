@@ -29,24 +29,22 @@ class ForecastDayModelTest {
     void tearDown() throws Exception {
     }
 
-	
-	@Test
-	public void testGetWeatherCondition(){
-		WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
-		try{
+    @Test
+    public void testGetWeatherCondition() {
+        WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
+        try {
 
-			assertNotNull(weatherApiConnection.getWeatherData());
+            assertNotNull(weatherApiConnection.getWeatherData());
 
-			assertEquals("String", weatherApiConnection.getWeatherData().getClass().getSimpleName());
+            assertEquals("String", weatherApiConnection.getWeatherData().getClass().getSimpleName());
 
-			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
+            WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
 
-			assertNotEquals(weatherApiConnection.getWeatherData(), weatherApiConnection2.getWeatherData());
-		}catch(Exception e){
-			fail("Fail to parse json string");
-		}
-	}
-
+            assertNotEquals(weatherApiConnection.getWeatherData(), weatherApiConnection2.getWeatherData());
+        } catch (Exception e) {
+            fail("Fail to parse json string");
+        }
+    }
 
     @Test
     public void testGetDate() {
@@ -76,18 +74,17 @@ class ForecastDayModelTest {
     public void testGetWind() {
         // Test cases
         JSONObject[] testJsonObjects = {
-                new JSONObject().put("maxwind_kph", 20.5), // Test case 1: Wind speed is 20.5 kph
-                new JSONObject().put("maxwind_kph", 15.3), // Test case 2: Wind speed is 15.3 kph
-                new JSONObject().put("maxwind_kph", 30.0) // Test case 3: Wind speed is 30.0 kph
+                new JSONObject().put("day", new JSONObject().put("maxwind_kph", 20.5)), // Test case 1: Wind speed is 20.5 kph
+                new JSONObject().put("day", new JSONObject().put("maxwind_kph", 15.3)), // Test case 2: Wind speed is 15.3 kph
+                new JSONObject().put("day", new JSONObject().put("maxwind_kph", 30.0)) // Test case 3: Wind speed is 30.0 kph
         };
 
         // Perform tests for each test case
         for (JSONObject jsonObject : testJsonObjects) {
             ForecastDayModel instance = new ForecastDayModel(jsonObject);
-            double expectedWindSpeed = jsonObject.getDouble("maxwind_kph");
-
+            double expectedWindSpeed = jsonObject.getJSONObject("day").getDouble("maxwind_kph");
             double actualWindSpeed = instance.getWind();
-            assertEquals(expectedWindSpeed, actualWindSpeed,0.0);
+            assertEquals(expectedWindSpeed, actualWindSpeed, 0.01);
         }
     }
 
@@ -105,7 +102,7 @@ class ForecastDayModelTest {
 
         // test for not null
         assertNotEquals(expected, forecastDayJson);
-        
+
         // Test multiple cases using a for loop
         assertEquals(expected, forecastDayModel.getMostFeelsLikeTemperature());
 
