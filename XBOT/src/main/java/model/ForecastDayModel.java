@@ -55,6 +55,6 @@ public class ForecastDayModel {
 		 * method to return the weather condition as String from the JSON object in
 		 * forecastDayJson
 		 */
-		return null;
+		return forecastDayJson.getJSONObject("day").getJSONObject("condition").getString("text");
 	}
 }

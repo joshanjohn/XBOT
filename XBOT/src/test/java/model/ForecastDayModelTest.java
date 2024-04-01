@@ -35,13 +35,13 @@ class ForecastDayModelTest {
 		WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
 		try{
 
-			assertNotNull(weatherApiConnection.getWeatherCondition());
+			assertNotNull(weatherApiConnection.getWeatherData());
 
-			assertEquals("String", weatherApiConnection.getWeatherCondition().getClass().getSimpleName());
+			assertEquals("String", weatherApiConnection.getWeatherData().getClass().getSimpleName());
 
 			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
 
-			assertNotEquals(weatherApiConnection.getWeatherCondition(), weatherApiConnection2.getWeatherCondition());
+			assertNotEquals(weatherApiConnection.getWeatherData(), weatherApiConnection2.getWeatherData());
 		}catch(Exception e){
 			fail("Fail to parse json string");
 		}
