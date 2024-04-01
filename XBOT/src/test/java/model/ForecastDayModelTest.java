@@ -11,22 +11,23 @@ import org.junit.jupiter.api.Test;
 
 class ForecastDayModelTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+    @BeforeAll
+    static void setUpBeforeClass() throws Exception {
+    }
 
-	@AfterAll
-	}
+    @AfterAll
+    static void tearDownAfterClass() throws Exception {
+    }
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+    @BeforeEach
+    void setUp() throws Exception {
+    }
 
-	@AfterEach
-	void tearDown() throws Exception {
-	}
+    @AfterEach
+    void tearDown() throws Exception {
+    }
 
-	@Test
+    @Test
     public void testGetDate() {
         // Test case 1: Valid date
         JSONObject forecastDayJson1 = new JSONObject();
@@ -54,9 +55,9 @@ class ForecastDayModelTest {
     public void testGetWind() {
         // Test cases
         JSONObject[] testJsonObjects = {
-            new JSONObject().put("maxwind_kph", 20.5),  // Test case 1: Wind speed is 20.5 kph
-            new JSONObject().put("maxwind_kph", 15.3),  // Test case 2: Wind speed is 15.3 kph
-            new JSONObject().put("maxwind_kph", 30.0)   // Test case 3: Wind speed is 30.0 kph
+                new JSONObject().put("maxwind_kph", 20.5), // Test case 1: Wind speed is 20.5 kph
+                new JSONObject().put("maxwind_kph", 15.3), // Test case 2: Wind speed is 15.3 kph
+                new JSONObject().put("maxwind_kph", 30.0) // Test case 3: Wind speed is 30.0 kph
         };
 
         // Perform tests for each test case
@@ -67,6 +68,8 @@ class ForecastDayModelTest {
             double actualWindSpeed = instance.getWind();
             assertEquals(expectedWindSpeed, actualWindSpeed, 0.01);
         }
+    }
+
     @Test
     public void testGetMostFeelsLikeTemperature() {
         // Mock forecastDayJson for testing
@@ -79,11 +82,12 @@ class ForecastDayModelTest {
         // Expected maximum feels like temperature
         double expected = 22.5;
 
+        // test for not null
+        assertNotEquals(expected, forecastDayJson);
+        
         // Test multiple cases using a for loop
         assertEquals(expected, forecastDayModel.getMostFeelsLikeTemperature());
 
-        // test for not null
-        assertNotEquals(expected, forecastDayJson);
     }
 
 }
