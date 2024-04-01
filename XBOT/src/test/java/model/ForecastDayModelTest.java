@@ -87,7 +87,7 @@ class ForecastDayModelTest {
             double expectedWindSpeed = jsonObject.getDouble("maxwind_kph");
 
             double actualWindSpeed = instance.getWind();
-            assertEquals(expectedWindSpeed, actualWindSpeed, 0.01);
+            assertEquals(expectedWindSpeed, actualWindSpeed,0.0);
         }
     }
 

@@ -25,7 +25,7 @@ public class ForecastDayModel {
 		/*
 		 * method to return the wind speed in kph.
 		 */
-		return 0.0;
+		return forecastDayJson.getJSONObject("day").getDouble("maxwind_kph");
 	}
 
 	public double getMostFeelsLikeTemperature() {
