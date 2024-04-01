@@ -21,7 +21,7 @@ public class ForecastDayModel {
 		return forecastDayJson.getString("date");
 	}
 
-	public double getWind() {
+	public double getWind(String string) {
 		/*
 		 * method to return the wind speed in kph.
 		 */
@@ -56,5 +56,10 @@ public class ForecastDayModel {
 		 * forecastDayJson
 		 */
 		return forecastDayJson.getJSONObject("day").getJSONObject("condition").getString("text");
+	}
+
+	public double getWind() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getWind'");
 	}
 }
