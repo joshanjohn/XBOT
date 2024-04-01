@@ -58,10 +58,15 @@ public class Main {
                 System.out.println("Weather Condition: " + weatherCondition);
                 System.out.println("Wind: " + wind);
                 System.out.println("Recomendations for this day:");
-                //clothes(temp, weatherCondition, wind);
+                clothes(temp, weatherCondition, wind);
 			}
 			System.out.println("-------------");
 		}
+	}
+
+	public static String clothes(Double temp, String weatherCondition, Double wind)
+	{
+		return null;
 	}
 
 }
