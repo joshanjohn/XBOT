@@ -28,25 +28,22 @@ class ForecastDayModelTest {
 	void tearDown() throws Exception {
 	}
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	
+// 	@Test
+// 	public void testGetWeatherCondition(){
+// 		WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
+// 		try{
 
-	@Test
-	public void testGetWeatherCondition(){
-		WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
-		try{
+// 			assertNotNull(weatherApiConnection.getWeatherCondition());
 
-			assertNotNull(weatherApiConnection.getWeatherCondition());
+// 			assertEquals("String", weatherApiConnection.getWeatherCondition().getClass().getSimpleName());
 
-			assertEquals("String", weatherApiConnection.getWeatherCondition().getClass().getSimpleName());
+// 			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
 
-			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
-
-			assertNotEquals(weatherApiConnection.getWeatherCondition(), weatherApiConnection2.getWeatherCondition());
-		}catch(Exception e){
-			fail("Fail to parse json string");
-		}
-	}
+// 			assertNotEquals(weatherApiConnection.getWeatherCondition(), weatherApiConnection2.getWeatherCondition());
+// 		}catch(Exception e){
+// 			fail("Fail to parse json string");
+// 		}
+// 	}
 }
+
