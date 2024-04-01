@@ -27,4 +27,12 @@ public class ForecastDayModel {
 		 */
 		return 0.0;
 	}
+
+
+	public double getMostFeelsLikeTemperature() {
+		/*
+		 * method to return the most feels like temperature in celcius.
+		 */
+		return 0.0;
+	}
 }
