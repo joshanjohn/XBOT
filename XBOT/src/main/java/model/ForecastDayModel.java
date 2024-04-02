@@ -21,6 +21,14 @@ public class ForecastDayModel {
 		return forecastDayJson.getString("date");
 	}
 
+	public double getWind() {
+		/*
+		 * method to return the wind speed in kph.
+		 */
+		return forecastDayJson.getJSONObject("day").getDouble("maxwind_kph");
+	}
+
+	
 	public String getWeatherCondition() {
 		/*
 		 * method to return the weather condition as String from the JSON object in
@@ -29,4 +37,5 @@ public class ForecastDayModel {
 		return forecastDayJson.getJSONObject("day").getJSONObject("condition").getString("text");
 	}
 
+	
 }
