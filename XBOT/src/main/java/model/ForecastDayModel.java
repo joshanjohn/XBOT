@@ -11,7 +11,6 @@ public class ForecastDayModel {
 		this.forecastDayJson = forecastDayJson;
 	}
 
-	
 	public String getDate() {
 		/*
 		 * method to return the date from the JSON object in forecastDayJson
@@ -20,6 +19,14 @@ public class ForecastDayModel {
 			return null;
 		}
 		return forecastDayJson.getString("date");
+	}
+
+	public String getWeatherCondition() {
+		/*
+		 * method to return the weather condition as String from the JSON object in
+		 * forecastDayJson
+		 */
+		return forecastDayJson.getJSONObject("day").getJSONObject("condition").getString("text");
 	}
 
 }

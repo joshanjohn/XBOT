@@ -87,4 +87,5 @@ public class WeatherApiConnection {
 
         return stringBuilder.toString();
     }
+
 }

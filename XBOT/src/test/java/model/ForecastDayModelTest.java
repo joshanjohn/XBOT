@@ -9,25 +9,44 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import weather.WeatherApiConnection;
+
 class ForecastDayModelTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+    @BeforeAll
+    static void setUpBeforeClass() throws Exception {
+    }
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
+    @AfterAll
+    static void tearDownAfterClass() throws Exception {
+    }
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+    @BeforeEach
+    void setUp() throws Exception {
+    }
 
-	@AfterEach
-	void tearDown() throws Exception {
-	}
+    @AfterEach
+    void tearDown() throws Exception {
+    }
 
-	@Test
+    @Test
+    public void testGetWeatherCondition() {
+        WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
+        try {
+
+            assertNotNull(weatherApiConnection.getWeatherData());
+
+            assertEquals("String", weatherApiConnection.getWeatherData().getClass().getSimpleName());
+
+            WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
+
+            assertNotEquals(weatherApiConnection.getWeatherData(), weatherApiConnection2.getWeatherData());
+        } catch (Exception e) {
+            fail("Fail to parse json string");
+        }
+    }
+
+    @Test
     public void testGetDate() {
         // Test case 1: Valid date
         JSONObject forecastDayJson1 = new JSONObject();
