@@ -47,7 +47,7 @@ class MainTest {
 			String weatherCondition = (String) data[1];
 			String expectedRecommendation = (String) data[2]; // expected cloth recommendation
 
-			String actualRecommendation = Main.clothes(temp, weatherCondition); // actual recommendation
+			String actualRecommendation = main.clothes(temp, weatherCondition); // actual recommendation
 
 			// test for null
 			assertNotNull(actualRecommendation);
