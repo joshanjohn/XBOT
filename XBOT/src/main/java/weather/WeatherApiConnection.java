@@ -88,13 +88,4 @@ public class WeatherApiConnection {
         return stringBuilder.toString();
     }
 
-    public String getWeatherCondition()
-	{
-		/*
-		 * method to return the weather condition as String from the JSON object in
-		 * forecastDayJson
-		 */
-		return null;
-	}
-
 }
