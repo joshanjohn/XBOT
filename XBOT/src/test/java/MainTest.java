@@ -25,8 +25,37 @@ class MainTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testCloth() {
+
+		Main main = new Main();
+		// Test cases with array of values: {temperature, weather condition, expected
+		// recommendation}
+		Object[][] testData = {
+				{ 25.0, "sunny",
+						"It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. " },
+				{ 18.0, "cloudy", "It is warm, but not hot. Wear something light but take the jacket." },
+				{ 0.0, "sunny", "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. " },
+				{ 18.0, "rainy",
+						"It is warm, but not hot. Wear something light but take the jacket.It is also rainy, so don't forget about umbrella!" },
+				{ 5.0, "cloudy", "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. " },
+				{ 14.0, "rainy day",
+						"It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. It is also rainy, so don't forget about umbrella!" }
+		};
+
+		for (Object[] data : testData) {
+			Double temp = (Double) data[0];
+			String weatherCondition = (String) data[1];
+			String expectedRecommendation = (String) data[2]; // expected cloth recommendation
+
+			String actualRecommendation = Main.clothes(temp, weatherCondition); // actual recommendation
+
+			// test for null
+			assertNotNull(actualRecommendation);
+
+			// test for array of values
+			assertEquals(expectedRecommendation, actualRecommendation);
+		}
+
 	}
 
 }
