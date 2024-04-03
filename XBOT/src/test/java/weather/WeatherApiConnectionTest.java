@@ -72,24 +72,24 @@ class WeatherApiConnectionTest {
 	 * method to test getWeatherData method
 	 */
 	@Test
-	public void testGetWeatherData() throws Exception{
-	try{
-    WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
+	public void testGetWeatherData() throws Exception {
+		try {
+			WeatherApiConnection weatherApiConnection = new WeatherApiConnection("Dublin", 3);
 
-	//here there if testing if the function is returning any response
-	assertNotNull(weatherApiConnection.getWeatherData());
+			// here there if testing if the function is returning any response
+			assertNotNull(weatherApiConnection.getWeatherData());
 
-	//here there is testing if the weather data is parse to the string
-	assertEquals("String",weatherApiConnection.getWeatherData().getClass().getSimpleName());
+			// here there is testing if the weather data is parse to the string
+			assertEquals("String", weatherApiConnection.getWeatherData().getClass().getSimpleName());
 
-	WeatherApiConnection  weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
+			WeatherApiConnection weatherApiConnection2 = new WeatherApiConnection("Cork", 3);
 
-	//here testing if the returning the same data for different location
-	assertNotEquals(weatherApiConnection.getWeatherData(),weatherApiConnection2.getWeatherData());
-	}catch(Exception e){
-		fail("Failed to parse json to the string");
+			// here testing if the returning the same data for different location
+			assertNotEquals(weatherApiConnection.getWeatherData(), weatherApiConnection2.getWeatherData());
+		} catch (Exception e) {
+			fail("Failed to parse json to the string");
+		}
+
 	}
-    
-}
 
 }
