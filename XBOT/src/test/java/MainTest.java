@@ -34,12 +34,16 @@ class MainTest {
 				{ 25.0, "sunny",
 						"It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. " },
 				{ 18.0, "cloudy", "It is warm, but not hot. Wear something light but take the jacket." },
-				{ 0.0, "sunny", "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. " },
 				{ 18.0, "rainy",
 						"It is warm, but not hot. Wear something light but take the jacket.It is also rainy, so don't forget about umbrella!" },
 				{ 5.0, "cloudy", "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. " },
 				{ 14.0, "rainy day",
-						"It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. It is also rainy, so don't forget about umbrella!" }
+						"It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. It is also rainy, so don't forget about umbrella!" },
+				{ -12.0, "cloudy",
+						"It is freezing! Wear something really warm. Don't forget about the gloves, a scarf and a cap. " },
+				{ -12.0, "Rain",
+						"It is freezing! Wear something really warm. Don't forget about the gloves, a scarf and a cap. It is also rainy, so don't forget about umbrella!" },
+				{ 0.0, "sunny", "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. " },
 		};
 
 		for (Object[] data : testData) {
