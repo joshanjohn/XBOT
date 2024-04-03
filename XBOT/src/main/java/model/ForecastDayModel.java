@@ -28,7 +28,28 @@ public class ForecastDayModel {
 		return forecastDayJson.getJSONObject("day").getDouble("maxwind_kph");
 	}
 
-	
+	public double getMostFeelsLikeTemperature() {
+		/*
+		 * method to return the most feels like temperature in celcius.
+		 */
+
+		// getting JSON for hours from the forecastDayJson and store in array
+		JSONArray hoursArray = forecastDayJson.getJSONArray("hour");
+
+		// Initialize variables to keep track of the most feels like temperature
+		double maxFeelsLikeTemperature = Double.MIN_VALUE;
+
+		// Iterate through each hour to find the maximum feels like temperature
+		for (int i = 0; i < hoursArray.length(); i++) {
+			JSONObject hourData = hoursArray.getJSONObject(i);
+			double feelsLikeTemperature = hourData.getDouble("feelslike_c");
+			if (feelsLikeTemperature > maxFeelsLikeTemperature) {
+				maxFeelsLikeTemperature = feelsLikeTemperature;
+			}
+		}
+
+		return maxFeelsLikeTemperature;
+	}
 	public String getWeatherCondition() {
 		/*
 		 * method to return the weather condition as String from the JSON object in
