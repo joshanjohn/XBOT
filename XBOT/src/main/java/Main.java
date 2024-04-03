@@ -58,15 +58,28 @@ public class Main {
                 System.out.println("Weather Condition: " + weatherCondition);
                 System.out.println("Wind: " + wind);
                 System.out.println("Recomendations for this day:");
-                clothes(temp, weatherCondition);
+                System.out.println(clothes(temp, weatherCondition));
 			}
 			System.out.println("-------------");
 		}
 	}
 
-	public static String clothes(Double temp, String weatherCondition)
-	{
-		return null;
+	public static String clothes(Double temp, String weatherCondition) {
+		String recommendation = "";
+		if (temp > 20)
+			recommendation += "It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. ";
+		else if (temp < 20 && temp >= 15)
+			recommendation += "It is warm, but not hot. Wear something light but take the jacket.";
+		else if (temp < 15 && temp >= 10)
+			recommendation += "It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. ";
+		else if (temp < 10 && temp >= 0)
+			recommendation += "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. ";
+		else
+			recommendation += "It is freezing! Wear something really warm. Don't forget about the gloves, a scarf and a cap. ";
+		if (weatherCondition.toLowerCase().contains("rainy")
+				|| weatherCondition.toLowerCase().contains("rain"))
+			recommendation += "It is also rainy, so don't forget about umbrella!";
+		return recommendation;
 	}
 
 }
