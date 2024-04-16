@@ -38,5 +38,10 @@ public class XBOT extends JPanel {
 		add(scrollPane, BorderLayout.CENTER); // Adding the scroll pane containing the chat area to the center of the
 												// panel
 	}
+	
+	//Generates greeting according to current time of day
+	private String generateGreeting() {
+		
+	}
 
 }
