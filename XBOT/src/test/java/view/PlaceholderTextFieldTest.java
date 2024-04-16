@@ -28,7 +28,7 @@ class PlaceholderTextFieldTest {
 	}
 
 	@Test
-	void testAddFocusListener() {
+    void testAddFocusListener() {
 		PlaceholderTextField textField = new PlaceholderTextField("Enter text here");
 
 		// Get the focus listeners added to the text field
