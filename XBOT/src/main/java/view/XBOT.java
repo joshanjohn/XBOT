@@ -44,11 +44,11 @@ public class XBOT extends JPanel {
 		Calendar calender = Calendar.getInstance(); // getting the current calendar instance
 		int hour = calender.get(Calendar.HOUR_OF_DAY); // getting the current time of the day
 		if(hour >= 6 && hour < 12) { // checking if its morning
-			return "Good Morning!"; // as it will return as good morning greeting
+			return null; 
 		}else if (hour >= 12 && hour < 17) {// checking if its afternoon
-			return "Good Afternoon!"; // as it will return as good afternoon greeting
+			return null; 
 		}else { // assuming its evening 
-			return "Good Evening"; // as it will return as good evening greeting
+			return null; 
 		}
 	}
 
