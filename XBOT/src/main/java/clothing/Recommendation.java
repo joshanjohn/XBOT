@@ -68,7 +68,7 @@ public class Recommendation {
 
 	}
 
-	private static int analyseWind(Double wind) {
+	protected static int analyseWind(Double wind) {
 		return 0;
 	}
 
