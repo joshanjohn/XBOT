@@ -58,8 +58,8 @@ class RecommendationTest {
 		Recommendation recommendation = new Recommendation();
 
 		// test with specific date string
-		String dateString = "2022-04-15";
-		String expected = "April 15,2024";
+		String dateString = "2024-04-15";
+		String expected = "April 15, 2024";
 		String result = recommendation.generateDate(dateString);
 
 		// check if the result is not null

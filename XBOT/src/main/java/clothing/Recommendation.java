@@ -62,9 +62,9 @@ public class Recommendation {
 
 		// Format the LocalDate object into the desired format
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-		String formatteDate = date.format(formatter);
+		String formattedDate = date.format(formatter);
 
-		return null;
+		return formattedDate;
 
 	}
 
