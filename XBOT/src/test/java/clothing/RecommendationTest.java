@@ -52,5 +52,14 @@ class RecommendationTest {
 		assertNotEquals(unexpected, recommendation.weatherSummary(date, temp, condition, wind));
 
 	}
+	
+	@Test 
+	public void testGenerateDate() {
+		
+		//test with specific date string
+		String dateString = "April 15,2024";
+		
+		
+	}
 
 }
