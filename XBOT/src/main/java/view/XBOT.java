@@ -54,8 +54,9 @@ public class XBOT extends JPanel {
 		}
 	}
 
+	// Prints the reply for user
 	public void xbotReply(String message) {
-        return;
+        chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
 }
