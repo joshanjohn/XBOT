@@ -1,4 +1,5 @@
 package view;
+
 import java.util.Calendar;
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -38,17 +39,17 @@ public class XBOT extends JPanel {
 		add(scrollPane, BorderLayout.CENTER); // Adding the scroll pane containing the chat area to the center of the
 												// panel
 	}
-	
-	//Generates greeting according to current time of day
-	private String generateGreeting() {
+
+	// Generates greeting according to current time of day
+	protected String generateGreeting() {
 		Calendar calender = Calendar.getInstance(); // getting the current calendar instance
 		int hour = calender.get(Calendar.HOUR_OF_DAY); // getting the current time of the day
-		if(hour >= 6 && hour < 12) { // checking if its morning
-			return null; 
-		}else if (hour >= 12 && hour < 17) {// checking if its afternoon
-			return null; 
-		}else { // assuming its evening 
-			return null; 
+		if (hour >= 6 && hour < 12) { // checking if its morning
+			return null;
+		} else if (hour >= 12 && hour < 17) {// checking if its afternoon
+			return null;
+		} else { // assuming its evening
+			return null;
 		}
 	}
 
