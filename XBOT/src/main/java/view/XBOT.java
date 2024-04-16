@@ -1,5 +1,5 @@
 package view;
-
+import java.util.Calendar;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -41,7 +41,15 @@ public class XBOT extends JPanel {
 	
 	//Generates greeting according to current time of day
 	private String generateGreeting() {
-		
+		Calendar calender = Calendar.getInstance();
+		int hour = calender.get(Calendar.HOUR_OF_DAY);
+		if(hour >= 6 && hour < 12) {
+			return "Good Morning!";
+		}else if (hour >= 12 && hour < 17) {
+			return "Good Afternoon!";
+		}else {
+			return "Good Evening"
+		}
 	}
 
 }
