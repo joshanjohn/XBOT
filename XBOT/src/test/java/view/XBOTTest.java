@@ -2,7 +2,10 @@ package view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.DateFormat.Field;
 import java.util.Calendar;
+
+import javax.swing.JTextArea;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -41,24 +44,33 @@ class XBOTTest {
 		if (hour >= 0 && hour < 12) { // Checking if it's morning
 			expectedGreeting = "Good morning!"; // expected Greeting is morning greeting
 		} else if (hour >= 12 && hour < 18) { // Checking if it's afternoon
-			expectedGreeting = "Good afternoon!"; // expected Greeting is  afternoon greeting
+			expectedGreeting = "Good afternoon!"; // expected Greeting is afternoon greeting
 		} else { // Assuming it's evening
 			expectedGreeting = "Good evening!"; // expected Greeting is evening greeting
 		}
-		
+
 		assertEquals(expectedGreeting, xbot.generateGreeting());
 	}
 
+	//test method for xbotReply
+	@Test
+	void testXbotReply() throws NoSuchFieldException, IllegalAccessException {
+		//Creating new XBOT
+		XBOT xbot = new XBOT();
+		//Creating a JTextArea to simulate the chat area
+		JTextArea chatArea = new JTextArea(); 
+
+		// Using reflection to access the private field chatArea
+		java.lang.reflect.Field field = XBOT.class.getDeclaredField("chatArea");
+		field.setAccessible(true);
+		field.set(xbot, chatArea);
+
+		String message = "Test message";
+
+		//Test case
+		xbot.xbotReply(message);
+		String expected = "XBOT: " + message + "\n";
+		assertEquals(expected, chatArea.getText());
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-

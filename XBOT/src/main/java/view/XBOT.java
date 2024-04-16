@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -53,7 +54,7 @@ public class XBOT extends JPanel {
 		}
 	}
 
-	private void xbotReply(String message) {
+	public void xbotReply(String message) {
         return;
     }
 
