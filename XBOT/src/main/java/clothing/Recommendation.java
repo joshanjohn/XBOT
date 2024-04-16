@@ -53,7 +53,7 @@ public class Recommendation {
 	}
 
 	// function to convert the date String into the desired format
-	private static String generateDate(String dateString) {
+	protected static String generateDate(String dateString) {
 
 		// parse the input String into a LocalDate object
 		LocalDate date = LocalDate.parse(dateString);
