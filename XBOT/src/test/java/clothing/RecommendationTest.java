@@ -40,7 +40,7 @@ class RecommendationTest {
 		// Define expected and unexpected output strings
 		String expected = "\n\t> On April 15, 2024, the weather with most feel like \n\ttemperature of 20°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
 		String unexpected = "\n\t> On March 15, 2024, the weather with most feel like \n\ttemperature of 89°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
-		
+
 		// Assert that the generated weather summary is not null
 		assertNotNull(recommendation.weatherSummary(date, temp, condition, wind));
 
@@ -52,14 +52,21 @@ class RecommendationTest {
 		assertNotEquals(unexpected, recommendation.weatherSummary(date, temp, condition, wind));
 
 	}
-	
-	@Test 
+
+	@Test
 	public void testGenerateDate() {
-		
-		//test with specific date string
-		String dateString = "April 15,2024";
-		
-		
+		Recommendation recommendation = new Recommendation();
+
+		// test with specific date string
+		String dateString = "2022-04-15";
+		String expected = "April 15,2024";
+		String result = recommendation.generateDate(dateString);
+
+		// check if the result is not null
+		assertNotNull(result);
+
+		//
+		assertEquals(expected, result);
 	}
 
 }
