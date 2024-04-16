@@ -31,7 +31,7 @@ public class PlaceholderTextField extends JTextField {
 
     @Override
     public Dimension getPreferredSize() {
-        return null;
+        return new Dimension(super.getPreferredSize().width, 30); // Set preferred height to 30 pixels
     }
 
 }
