@@ -29,4 +29,9 @@ public class PlaceholderTextField extends JTextField {
         });
     }
 
+    @Override
+    public Dimension getPreferredSize() {
+        return null;
+    }
+
 }
