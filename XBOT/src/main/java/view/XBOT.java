@@ -53,4 +53,8 @@ public class XBOT extends JPanel {
 		}
 	}
 
+	private void xbotReply(String message) {
+        return;
+    }
+
 }
