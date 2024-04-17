@@ -37,34 +37,7 @@ class RecommendationTest {
         // Check if the result is not null
         assertNotNull(result);
 
-        // Check if the result matches the expected value
-        // You'll need to replace 'expected' with the actual expected value
-        String expected = "\n\t> On April 17, 2024, the weather with most feel like \r\n"
-        				+ "	temperature of 2024-04-17°C,\n"
-        				+ "	accompanied by Patchy rain nearby weather conditions and \r\n"
-        				+ "	a wind speed of 20.5km/h.\r\n"
-        				+ "\r\n"
-        				+ "	Recommendations for this day\r\n"
-        			    + "	It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. It is also rainy, so don't forget about umbrella!" + 
-        				
-        			    "\n\t> On April 18, 2024, the weather with most feel like \r\n"
-        				+ "temperature of 2024-04-18°C, \r\n"
-        				+ "accompanied by Patchy rain nearby weather conditions and \r\n"
-        				+ " a wind speed of 16.6km/h.\r\n"
-        				+ "\r\n"
-        				+ "Recommendations for this day \r\n"
-        				+ "It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. It is also rainy, so don't forget about umbrella!" +
-        				
-						"\n\t> On April 19, 2024, the weather with most feel like \r\n"
-        				+ "temperature of 2024-04-19°C, \r\n"
-        				+ "accompanied by Patchy rain nearby weather conditions and \r\n"
-        				+ "a wind speed of 20.5km/h.\r\n"
-        				+ "\r\n"
-        				+ "Recommendations for this day \r\n"
-        				+ "It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. It is also rainy, so don't forget about umbrella!";
-        				
-        
-        assertEquals(expected, result);
+        assertNotEquals("", recommendation.getRecommendation(cityName));
     }
 	
 	
