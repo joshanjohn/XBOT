@@ -69,4 +69,16 @@ class RecommendationTest {
 		assertEquals(expected, result);
 	}
 
+	@Test
+	public void testAnalyseWind() {
+		// Test cases for different wind speeds
+		assertEquals(1, Recommendation.analyseWind(0.5)); // Light wind
+		assertEquals(1, Recommendation.analyseWind(3.0)); // Light wind
+		assertEquals(2, Recommendation.analyseWind(25.0)); // Moderate wind
+		assertEquals(3, Recommendation.analyseWind(80.0)); // Strong wind
+		assertEquals(4, Recommendation.analyseWind(110.0));// Very strong wind
+	}
+
+	
+
 }
