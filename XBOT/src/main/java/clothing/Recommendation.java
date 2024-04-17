@@ -32,11 +32,11 @@ public class Recommendation {
 	 }
 	 data.append("\n\n\tRecommendations for this day");
 	 data.append("\n\t" + clothes(temp,weatherCondition, wind));
-	 }return null;
+	 }return data.toString();
 	 }catch(Exception e) {
 	 }
 	 data.replace(0, data.length(),"No data found");
-	 return null;
+	 return data.toString();
 	 }
 
 	/**
