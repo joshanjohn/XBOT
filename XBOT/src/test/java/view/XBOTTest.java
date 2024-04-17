@@ -52,6 +52,25 @@ class XBOTTest {
 		assertEquals(expectedGreeting, xbot.generateGreeting());
 	}
 
-	
+	//test method for xbotReply
+	@Test
+	void testXbotReply() throws NoSuchFieldException, IllegalAccessException {
+		//Creating new XBOT
+		XBOT xbot = new XBOT();
+		//Creating a JTextArea to simulate the chat area
+		JTextArea chatArea = new JTextArea(); 
+
+		// Using reflection to access the private field chatArea
+		java.lang.reflect.Field field = XBOT.class.getDeclaredField("chatArea");
+		field.setAccessible(true);
+		field.set(xbot, chatArea);
+
+		String message = "Test message";
+
+		//Test case
+		xbot.xbotReply(message);
+		String expected = "XBOT: " + message + "\n";
+		assertEquals(expected, chatArea.getText());
+	}
 
 }

@@ -80,6 +80,12 @@ public class XBOT extends JPanel implements ActionListener{
 		}
 	}
 
+	// Prints the reply for user
+	public void xbotReply(String message) {
+        chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
+    }
+
+
 	private boolean sendMessage(String input) {
         try{
             chatArea.append("You: " + input + "\n"); // Displaying the user's message in the chat area
