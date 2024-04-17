@@ -9,35 +9,45 @@ import weather.WeatherAnalyzer;
 
 public class Recommendation {
 
-	// public static String getRecommendation(String cityName) {
-	// StringBuilder data = new StringBuilder();
-	// try {
-	// WeatherAnalyzer analyser = new WeatherAnalyzer(cityName, 3);
-	//
-	// //gets the weather forecast
-	// WeatherForecastModel weatherForecastModel =
-	// analyzer.getWeatherForecastModel();
-	//
-	// //loop through the forecast for the next 3 days
-	// for(int i = 0; i < 3; i++) {
-	// ForecastDayModel forecastDay = weatherForecastModel.getForecastDay(i);
-	// String date = forecastDay.getDate();
-	// Double temp = forecastDay.getMostFeelsLikeTemperature();
-	// String weatherCondition = forecastDay.getWeatherCondition();
-	// Double wind = forecast.getWind();
-	// if (i==0) {
-	// data.append(weatherSummary(date,date, weatherCondition,wind));
-	// }else {
-	// data.append("\n\n\n" + weatherSummary(date,date, weatherCondition,wind));
-	// }
-	// data.append("\n\n\tRecommendations for this day"));
-	// data.append("\n\t" + clothes(temp,weatherCondition));
-	// }return null;
-	// }catch(Exception e) {
-	// }
-	// data.replace(0, data.length(),"No data found"));
-	// return null;
-	// }
+	/**
+	 * Retrieves weather forecast data for a specified city and provides
+	 * recommendations based on the forecast.
+	 *
+	 * @param cityName The name of the city for which weather forecast and
+	 *                 recommendations are requested.
+	 * @return A formatted string containing weather forecast data and
+	 *         recommendations for the next 3 days.
+	 */
+	public static String getRecommendation(String cityName) {
+		StringBuilder data = new StringBuilder();
+		try {
+			WeatherAnalyzer analyzer = new WeatherAnalyzer(cityName, 3);
+
+			// Get the weather forecast
+			WeatherForecastModel weatherForecastModel = analyzer.getWeatherForecastModel();
+			// Loop through the forecast for the next 3 days
+			for (int i = 0; i < 3; i++) {
+				ForecastDayModel forecastDay = weatherForecastModel.getForecastDay(i);
+				String date = forecastDay.getDate();
+				Double temp = forecastDay.getMostFeelsLikeTemperature();
+				String weatherCondition = forecastDay.getWeatherCondition();
+				Double wind = forecastDay.getWind();
+				if (i == 0) {
+					data.append(weatherSummary(date, date, weatherCondition, wind));
+				} else {
+					data.append("\n\n\n" + weatherSummary(date, date, weatherCondition, wind));
+				}
+				data.append("\n\n\tRecomendations for this day:");
+				data.append("\n\t" + clothes(temp, weatherCondition, wind));
+			}
+			return data.toString();
+		} catch (Exception e) {
+		}
+		// If an exception occurs or data is not found, return a message indicating no
+		// data found
+		data.replace(0, data.length(), "No data found");
+		return data.toString();
+	}
 
 	/**
 	 * Generates a weather summary based on provided parameters.
@@ -69,16 +79,16 @@ public class Recommendation {
 	}
 
 	protected static String clothes(Double temp, String weatherCondition, Double wind) {
-		//Creating variables
+		// Creating variables
 		int windResult = analyseWind(wind);
 		String recommendation = "";
 
-		//Analysing wind speed
+		// Analysing wind speed
 		if (windResult == 4) {
 			recommendation += "IT IS STORM! Stay at home!";
 			return recommendation;
 		}
-		//Different results according to temperature
+		// Different results according to temperature
 		if (temp > 20)
 			recommendation += "It is hot! Wear something light, like shorts and t-shirt. \n\tDon't forget about headdress. ";
 		else if (temp < 20 && temp >= 15)
@@ -89,7 +99,7 @@ public class Recommendation {
 			recommendation += "It is cold! Wear something warm, like sweater, \n\ttopped with warm jacket and jeans. ";
 		else
 			recommendation += "It is freezing! Wear something really warm. \n\tDon't forget about the gloves, a scarf and a cap. ";
-		//Using also weather condition
+		// Using also weather condition
 		if (weatherCondition.toLowerCase().contains("rainy")
 				|| weatherCondition.toLowerCase().contains("rain"))
 			recommendation += "\n\tIt is also rainy, so don't forget about umbrella!";
