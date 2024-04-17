@@ -53,6 +53,17 @@ public class XBOT extends JPanel {
 		}
 	}
 
+	// Action performed when user interacts with input field or OK button
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == inputField || e.getActionCommand().equals("OK")) { // Checking if the event source is the input field or OK button
+            String input = inputField.getText().trim(); // Getting the text from the input field
+            if (!input.isEmpty() && !input.equals("Type here")) { // Checking if the input is not empty or the default placeholder text
+                sendMessage(input); // Sending the user's message
+                xbotReply("Enter the city name to get suggestion"); // Prompting the user for input
+            }
+        }
+    }
+
 	private boolean sendMessage(String input) {
 		try {
 			chatArea.append("You: " + input + "\n"); // Displaying the user's message in the chat area
