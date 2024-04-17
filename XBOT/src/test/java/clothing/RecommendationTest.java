@@ -70,14 +70,26 @@ class RecommendationTest {
 	}
 
 	@Test
-    public void testAnalyseWind() {
-        // Test cases for different wind speeds
-        assertEquals(1, Recommendation.analyseWind(0.5));  // Light wind
-        assertEquals(1, Recommendation.analyseWind(3.0));  // Light wind
-        assertEquals(2, Recommendation.analyseWind(25.0)); // Moderate wind
-        assertEquals(3, Recommendation.analyseWind(80.0)); // Strong wind
-        assertEquals(4, Recommendation.analyseWind(110.0));// Very strong wind
+	public void testAnalyseWind() {
+		// Test cases for different wind speeds
+		assertEquals(1, Recommendation.analyseWind(0.5)); // Light wind
+		assertEquals(1, Recommendation.analyseWind(3.0)); // Light wind
+		assertEquals(2, Recommendation.analyseWind(25.0)); // Moderate wind
+		assertEquals(3, Recommendation.analyseWind(80.0)); // Strong wind
+		assertEquals(4, Recommendation.analyseWind(110.0));// Very strong wind
 	}
-       
+
+	@Test
+	public void clothesTest() {
+		// Test cases for different temperature, weather conditions, and wind speeds
+		assertEquals("It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. ",
+				Recommendation.clothes(25.0, "Sunny", 5.0)); // Light wind, hot temperature
+		assertEquals("It is warm, but not hot. Wear something light but take the jacket.",
+				Recommendation.clothes(18.0, "Partly cloudy", 15.0)); // Moderate wind, warm temperature
+		assertEquals("It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. ",
+				Recommendation.clothes(8.0, "Cloudy with showers", 30.0)); // Strong wind, cold temperature
+		assertEquals("IT IS STORM! Stay at home!",
+				Recommendation.clothes(8.0, "Cloudy with showers", 120.0));// Storm
+	}
 
 }

@@ -68,6 +68,10 @@ public class Recommendation {
 
 	}
 
+	protected static String clothes(Double temp, String weatherCondition, Double wind) {
+		return null;
+	}
+
 	protected static int analyseWind(Double wind) {
 		// method that returns wind description according to its speed
 
