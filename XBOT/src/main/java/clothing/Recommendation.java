@@ -84,7 +84,7 @@ public class Recommendation {
 		else if (temp < 20 && temp >= 15)
 			recommendation += "It is warm, but not hot. Wear something light but take the jacket.";
 		else if (temp < 15 && temp >= 10)
-			recommendation += "It is a little bit cold. Wear something light that warms you, like a long-sleeved shirt with a sweater or fleece, topped with a jacket. ";
+			recommendation += "It is a little bit cold. Wear something light that warms you, \n\tlike a long-sleeved shirt with a sweater or fleece, topped with a jacket. ";
 		else if (temp < 10 && temp >= 0)
 			recommendation += "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. ";
 		else
@@ -92,7 +92,7 @@ public class Recommendation {
 		// Using also weather condition
 		if (weatherCondition.toLowerCase().contains("rainy")
 				|| weatherCondition.toLowerCase().contains("rain"))
-			recommendation += "It is also rainy, so don't forget about umbrella!";
+			recommendation += "\n\tIt is also rainy, so don't forget about umbrella!";
 
 		return recommendation;
 	}
