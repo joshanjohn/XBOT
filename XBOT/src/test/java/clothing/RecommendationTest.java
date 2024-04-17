@@ -27,6 +27,20 @@ class RecommendationTest {
 	}
 
 	@Test
+	public void testGetRecommendation() {
+		Recommendation recommendation = new Recommendation();
+
+		// Test with a specific city name
+		String cityName = "London";
+		String result = recommendation.getRecommendation(cityName);
+
+		// Check if the result is not null
+		assertNotNull(result);
+
+		assertNotEquals("", recommendation.getRecommendation(cityName));
+	}
+
+	@Test
 	public void testWeatherSummary() {
 		// Instantiate the Recommendation class
 		Recommendation recommendation = new Recommendation();
