@@ -80,6 +80,17 @@ public class XBOT extends JPanel implements ActionListener{
 		}
 	}
 
-
+	private boolean sendMessage(String input) {
+        try{
+            chatArea.append("You: " + input + "\n"); // Displaying the user's message in the chat area
+            inputField.setText(""); // Clearing the input field
+            String r = Recommendation.getRecommendation(input); // Getting a recommendation based on the user's input
+            xbotReply(r+"\n\n"); // Displaying XBOT's reply in the chat area
+            return false; // Returning false indicating the message was not an error
+        }catch(Exception e){
+            return false; // Returning false indicating an error occurred
+        }
+        
+    }
 
 }
