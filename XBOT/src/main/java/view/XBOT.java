@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import clothing.Recommendation;
+
 public class XBOT extends JPanel {
 	private PlaceholderTextField inputField; // Declaration of PlaceholderTextField object
 	private JTextArea chatArea; // Declaration of JTextArea object
