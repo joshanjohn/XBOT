@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,34 +13,58 @@ import javax.swing.JTextArea;
 
 import clothing.Recommendation;
 
-public class XBOT extends JPanel {
+public class XBOT extends JPanel implements ActionListener{
 	private PlaceholderTextField inputField; // Declaration of PlaceholderTextField object
 	private JTextArea chatArea; // Declaration of JTextArea object
 	private JScrollPane scrollPane; // Declaration of JScrollPane object
 
 	// Constructor for XBOT
 	public XBOT() {
-		/*
-		 * Create OK button
-		 */
-		JButton okButton = new JButton("OK"); // Creating an OK button
+		setLayout(new BorderLayout()); // Setting the layout manager for the panel
 
-		/*
-		 * Create chat area with line wrap
-		 */
-		chatArea = new JTextArea(); // Creating a JTextArea for displaying chat messages
-		chatArea.setEditable(false); // Making the chat area non-editable
-		chatArea.setLineWrap(true); // Enabling line wrap for the chat area
-		chatArea.setFont(new Font("Arial", Font.PLAIN, 16)); // Setting the font size for the chat area
+        /*
+         * Create input field with placeholder text
+         */
+        inputField = new PlaceholderTextField("Type here"); // Initializing the input field with placeholder text
+        inputField.addActionListener(this); // Adding an action listener to the input field
+        inputField.setFont(new Font("Arial", Font.BOLD, 22)); // Setting the font size for the input field
 
-		/*
-		 * Create scroll pane for the chat area
-		 */
-		scrollPane = new JScrollPane(chatArea); // Creating a JScrollPane to scroll the chat area
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Setting vertical scroll policy
+        /*
+         * Create OK button
+         */
+        JButton okButton = new JButton("OK"); // Creating an OK button
+        okButton.addActionListener(this); // Adding an action listener to the OK button
 
-		add(scrollPane, BorderLayout.CENTER); // Adding the scroll pane containing the chat area to the center of the
-												// panel
+        /*
+         * Create input panel to hold input field and OK button
+         */
+        JPanel inputPanel = new JPanel(new BorderLayout()); // Creating a panel to hold the input field and OK button
+        inputPanel.add(inputField, BorderLayout.CENTER); // Adding the input field to the input panel
+        inputPanel.add(okButton, BorderLayout.EAST); // Adding the OK button to the input panel
+
+        /*
+         * Create chat area with line wrap
+         */
+        chatArea = new JTextArea(); // Creating a JTextArea for displaying chat messages
+        chatArea.setEditable(false); // Making the chat area non-editable
+        chatArea.setLineWrap(true); // Enabling line wrap for the chat area
+        chatArea.setFont(new Font("Arial", Font.PLAIN, 16)); // Setting the font size for the chat area
+
+        /*
+         * Create scroll pane for the chat area
+         */
+        scrollPane = new JScrollPane(chatArea); // Creating a JScrollPane to scroll the chat area
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Setting vertical scroll policy
+
+        /*
+         * Add components to panel
+         */
+        add(inputPanel, BorderLayout.SOUTH); // Adding the input panel to the bottom of the panel
+        add(scrollPane, BorderLayout.CENTER); // Adding the scroll pane containing the chat area to the center of the panel
+
+        // Greet the user based on the time of day
+        chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
+        xbotReply("Enter the destination"); // Displaying a message from XBOT
 	}
 
 	// Generates greeting according to current time of day
