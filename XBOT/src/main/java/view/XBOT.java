@@ -3,7 +3,7 @@ package view;
 import java.util.Calendar;
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 import javax.swing.JButton;
@@ -73,6 +73,18 @@ public class XBOT extends JPanel {
             return false; // Returning false indicating an error occurred
         }
         
+    }
+
+
+	// Action performed when user interacts with input field or OK button
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == inputField || e.getActionCommand().equals("OK")) { // Checking if the event source is the input field or OK button
+            String input = inputField.getText().trim(); // Getting the text from the input field
+            if (!input.isEmpty() && !input.equals("Type here")) { // Checking if the input is not empty or the default placeholder text
+                sendMessage(input); // Sending the user's message
+                xbotReply("Enter the city name to get suggestion"); // Prompting the user for input
+            }
+        }
     }
 
 }
