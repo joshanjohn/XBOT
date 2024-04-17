@@ -27,6 +27,14 @@ class RecommendationTest {
 	}
 
 	@Test
+	public void testGetRecommendation() {
+		Recommendation recommendation = new Recommendation();
+		
+		
+    }
+	
+	
+	@Test
 	public void testWeatherSummary() {
 		// Instantiate the Recommendation class
 		Recommendation recommendation = new Recommendation();
