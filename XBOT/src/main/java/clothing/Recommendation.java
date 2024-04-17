@@ -25,9 +25,9 @@ public class Recommendation {
 				String weatherCondition = forecastDay.getWeatherCondition();
 				Double wind = forecastDay.getWind();
 				if (i == 0) {
-					data.append(weatherSummary(date, date, weatherCondition, wind));
+					data.append(weatherSummary(date, temp, weatherCondition, wind));
 				} else {
-					data.append("\n\n\n" + weatherSummary(date, date, weatherCondition, wind));
+					data.append("\n\n\n" + weatherSummary(date, temp, weatherCondition, wind));
 				}
 				data.append("\n\n\tRecommendations for this day");
 				data.append("\n\t" + clothes(temp, weatherCondition, wind));
@@ -48,7 +48,7 @@ public class Recommendation {
 	 * @param wind      The wind speed for the given date.
 	 * @return A formatted weather summary string.
 	 */
-	protected static String weatherSummary(String date, String temp, String condition, Double wind) {
+	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
 		return "\n\t> On " + generateDate(date) + ", the weather with most feel like \n\ttemperature of " + temp
 				+ "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind
 				+ "km/h.";
