@@ -30,7 +30,17 @@ class RecommendationTest {
 	public void testGetRecommendation() {
 		Recommendation recommendation = new Recommendation();
 		
-		
+		// Test with a specific city name
+        String cityName = "London";
+        String result = recommendation.getRecommendation(cityName);
+
+        // Check if the result is not null
+        assertNotNull(result);
+
+        // Check if the result matches the expected value
+        // You'll need to replace 'expected' with the actual expected value
+        String expected = "Expected recommendation for London";
+        assertEquals(expected, result);
     }
 	
 	
