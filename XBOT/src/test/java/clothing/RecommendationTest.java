@@ -48,13 +48,13 @@ class RecommendationTest {
 
 		// Define test input values
 		String date = "2024-04-15";
-		String temp = "20";
+		Double temp = 20.0;
 		String condition = "Sunny";
 		Double wind = 10.5;
 
 		// Define expected and unexpected output strings
-		String expected = "\n\t> On April 15, 2024, the weather with most feel like \n\ttemperature of 20°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
-		String unexpected = "\n\t> On March 15, 2024, the weather with most feel like \n\ttemperature of 89°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
+		String expected = "\n\t> On April 15, 2024, the weather with most feel like \n\ttemperature of 20.0°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
+		String unexpected = "\n\t> On March 15, 2024, the weather with most feel like \n\ttemperature of 89.0°C, \n\taccompanied by Sunny weather conditions and \n\ta wind speed of 10.5km/h.";
 
 		// Assert that the generated weather summary is not null
 		assertNotNull(recommendation.weatherSummary(date, temp, condition, wind));
