@@ -17,6 +17,8 @@ public class XBOT extends JPanel implements ActionListener{
 	private PlaceholderTextField inputField; // Declaration of PlaceholderTextField object
 	private JTextArea chatArea; // Declaration of JTextArea object
 	private JScrollPane scrollPane; // Declaration of JScrollPane object
+    private String userName; // Store user's name for personalization
+    
 
 	// Constructor for XBOT
 	public XBOT() {
@@ -64,7 +66,8 @@ public class XBOT extends JPanel implements ActionListener{
 
         // Greet the user based on the time of day
         chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
-        xbotReply("Enter the destination"); // Displaying a message from XBOT
+        xbotReply("Enter your name");
+        
 	}
 
 	// Generates greeting according to current time of day
@@ -106,7 +109,7 @@ public class XBOT extends JPanel implements ActionListener{
             String input = inputField.getText().trim(); // Getting the text from the input field
             if (!input.isEmpty() && !input.equals("Type here")) { // Checking if the input is not empty or the default placeholder text
                 sendMessage(input); // Sending the user's message
-                xbotReply("Enter the city name to get suggestion"); // Prompting the user for input
+                // xbotReply("Enter the city name to get suggestion"); // Prompting the user for input
             }
         }
     }

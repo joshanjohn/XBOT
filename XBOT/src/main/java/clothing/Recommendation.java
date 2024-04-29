@@ -92,7 +92,7 @@ public class Recommendation {
 		// Using also weather condition
 		if (weatherCondition.toLowerCase().contains("rainy")
 				|| weatherCondition.toLowerCase().contains("rain"))
-			recommendation += "\n\tIt is raining, so take umbrella!";
+			recommendation += "\n\tIt is raining, take umbrella!";
 
 		return recommendation;
 	}
