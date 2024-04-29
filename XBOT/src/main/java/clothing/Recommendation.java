@@ -49,7 +49,7 @@ public class Recommendation {
 	 * @return A formatted weather summary string.
 	 */
 	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t> On " + generateDate(date) + ", the weather with most feel like \n\ttemperature of " + temp
+		return "\n\t>" + generateDate(date) + "-" + temp
 				+ "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind
 				+ "km/h.";
 	}
