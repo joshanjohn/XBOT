@@ -29,7 +29,7 @@ public class Recommendation {
 				} else {
 					data.append("\n\n\n" + weatherSummary(date, temp, weatherCondition, wind));
 				}
-				data.append("\n\n\tRecommendations for this day");
+				data.append("\n\n\tRecommendations:-");
 				data.append("\n\t" + clothes(temp, weatherCondition, wind));
 			}
 			return data.toString();
@@ -49,8 +49,8 @@ public class Recommendation {
 	 * @return A formatted weather summary string.
 	 */
 	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t>" + generateDate(date) + "-" + temp
-				+ "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind
+		return "\n\t>" + generateDate(date) + " ->  " + temp
+				+ "°C," + condition + " weather \n\twind speed -> " + wind
 				+ "km/h.";
 	}
 
