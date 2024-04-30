@@ -84,7 +84,7 @@ public class XBOT extends JPanel implements ActionListener {
             chatArea.append("You: " + input + "\n");
             inputField.setText(""); // Clear the input field after sending the message
             String r = Recommendation.getRecommendation(input);
-            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
+            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 50);
             typingEffect.execute();
         } catch (Exception e) {
             e.printStackTrace();
