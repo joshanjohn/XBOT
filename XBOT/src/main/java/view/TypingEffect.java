@@ -17,14 +17,17 @@ public class TypingEffect extends SwingWorker<Void, Character>{
 
     @Override
     protected Void doInBackground() throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'doInBackground'");
+        for (char c : message.toCharArray()) {
+            publish(c);
+            Thread.sleep(typingSpeed);
+        }
+        return null;
     }
 
 
     @Override
     protected void process(List<Character> chunks) {
-        
+
     }
 
 }
