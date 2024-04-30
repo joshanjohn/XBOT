@@ -17,6 +17,8 @@ public class XBOT extends JPanel implements ActionListener{
 	private PlaceholderTextField inputField; // Declaration of PlaceholderTextField object
 	private JTextArea chatArea; // Declaration of JTextArea object
 	private JScrollPane scrollPane; // Declaration of JScrollPane object
+    private String userName; // Store user's name for personalization
+    
 
 	// Constructor for XBOT
 	public XBOT() {
@@ -64,7 +66,10 @@ public class XBOT extends JPanel implements ActionListener{
 
         // Greet the user based on the time of day
         chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
-        xbotReply("Enter the destination"); // Displaying a message from XBOT
+        xbotReply("I am XBOT. I will be giving you the weather forecast.");
+        xbotReply("Enter your name");
+        inputField.setText("");
+        
 	}
 
 	// Generates greeting according to current time of day
@@ -87,16 +92,26 @@ public class XBOT extends JPanel implements ActionListener{
 
 
 	private boolean sendMessage(String input) {
-        try{
-            chatArea.append("You: " + input + "\n"); // Displaying the user's message in the chat area
-            inputField.setText(""); // Clearing the input field
-            String r = Recommendation.getRecommendation(input); // Getting a recommendation based on the user's input
-            xbotReply(r+"\n\n"); // Displaying XBOT's reply in the chat area
-            return false; // Returning false indicating the message was not an error
-        }catch(Exception e){
-            return false; // Returning false indicating an error occurred
+        if (userName == null) {
+            // If we haven't got the user's name yet, set it and greet them personally
+            userName = input;
+            chatArea.append("You: " + userName + "\n");
+            xbotReply("Hello, " + userName + "! "+ " Such a lovely name");
+            xbotReply("Enter the location to get weather reoprts");
+            return true; // Successfully set user's name
+        } else {
+            try {
+                chatArea.append("You: " + input + "\n");
+                inputField.setText("");
+                String r = Recommendation.getRecommendation(input);
+                xbotReply(r);
+                xbotReply("Enter the city name to get weather reoprts");
+                return true; // Successfully sent message and received response
+            } catch (Exception e) {
+                xbotReply("Sorry, I couldn't process your request. Please try again.");
+                return false; // Error occurred while processing message
+            }
         }
-        
     }
 
 
@@ -106,7 +121,6 @@ public class XBOT extends JPanel implements ActionListener{
             String input = inputField.getText().trim(); // Getting the text from the input field
             if (!input.isEmpty() && !input.equals("Type here")) { // Checking if the input is not empty or the default placeholder text
                 sendMessage(input); // Sending the user's message
-                xbotReply("Enter the city name to get suggestion"); // Prompting the user for input
             }
         }
     }
