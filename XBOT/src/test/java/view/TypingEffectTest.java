@@ -2,6 +2,8 @@ package view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JTextArea;
@@ -57,6 +59,39 @@ class TypingEffectTest {
 
         // Verify that the textArea contains the entire message
         assertEquals(message, textArea.getText().trim());
+    }
+
+
+    @Test
+    public void testProcess() {
+        // Create a JTextArea for testing
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+
+        // Create a list of characters to simulate chunks
+        List<Character> chunks = new ArrayList<>();
+        chunks.add('H');
+        chunks.add('e');
+        chunks.add('l');
+        chunks.add('l');
+        chunks.add('o');
+        chunks.add(',');
+        chunks.add(' ');
+        chunks.add('w');
+        chunks.add('o');
+        chunks.add('r');
+        chunks.add('l');
+        chunks.add('d');
+        chunks.add('!');
+
+        // Create a TypingEffect instance
+        TypingEffect typingEffect = new TypingEffect(textArea, "", 0);
+
+        // Execute process method
+        typingEffect.process(chunks);
+
+        // Verify that the textArea contains the entire message
+        assertEquals("Hello, world!", textArea.getText().trim());
     }
 
 }
