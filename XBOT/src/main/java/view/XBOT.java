@@ -66,7 +66,9 @@ public class XBOT extends JPanel implements ActionListener{
 
         // Greet the user based on the time of day
         chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
+        xbotReply("I am XBOT. I will be giving you the weather forecast.");
         xbotReply("Enter your name");
+        inputField.setText("");
         
 	}
 
@@ -93,7 +95,8 @@ public class XBOT extends JPanel implements ActionListener{
         if (userName == null) {
             // If we haven't got the user's name yet, set it and greet them personally
             userName = input;
-            xbotReply("Hello, " + userName + "!"+ "Such a lovely name");
+            chatArea.append("You: " + userName + "\n");
+            xbotReply("Hello, " + userName + "! "+ " Such a lovely name");
             xbotReply("Enter the location to get weather reoprts");
             return true; // Successfully set user's name
         } else {
@@ -102,7 +105,7 @@ public class XBOT extends JPanel implements ActionListener{
                 inputField.setText("");
                 String r = Recommendation.getRecommendation(input);
                 xbotReply(r);
-                xbotReply("Enter the city name to get suggestion");
+                xbotReply("Enter the city name to get weather reoprts");
                 return true; // Successfully sent message and received response
             } catch (Exception e) {
                 xbotReply("Sorry, I couldn't process your request. Please try again.");
