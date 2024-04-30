@@ -1,8 +1,9 @@
 package view;
 
+import java.util.List;
 import javax.swing.JTextArea;
 
-public class TypingEffect {
+public class TypingEffect extends SwingWorker<Void, Character>{
     private JTextArea textArea;
     private String message;
     private int typingSpeed;
@@ -12,4 +13,11 @@ public class TypingEffect {
         this.message = message;
         this.typingSpeed = typingSpeed;
     }
+
+    @Override
+    protected Void doInBackground() throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'doInBackground'");
+    }
+
 }
