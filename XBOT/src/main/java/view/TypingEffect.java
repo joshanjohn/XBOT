@@ -23,6 +23,8 @@ public class TypingEffect extends SwingWorker<Void, Character>{
 
 
     @Override
-    protected void process(List<Character> chunks) {}
+    protected void process(List<Character> chunks) {
+        
+    }
 
 }
