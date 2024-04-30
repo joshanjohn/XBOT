@@ -21,4 +21,8 @@ public class TypingEffect extends SwingWorker<Void, Character>{
         throw new UnsupportedOperationException("Unimplemented method 'doInBackground'");
     }
 
+
+    @Override
+    protected void process(List<Character> chunks) {}
+
 }
