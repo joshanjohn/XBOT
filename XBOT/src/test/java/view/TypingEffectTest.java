@@ -27,8 +27,32 @@ class TypingEffectTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+    public void testDoInBackground() {
+        // Create a JTextArea for testing
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+
+        // Create a TypingEffect instance
+        String message = "Hello, world!";
+        int typingSpeed = 50; // milliseconds
+        TypingEffect typingEffect = new TypingEffect(textArea, message, typingSpeed);
+
+        // Execute doInBackground method
+        try {
+            typingEffect.doInBackground();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Wait for the typing effect to complete
+        try {
+            TimeUnit.MILLISECONDS.sleep(message.length() * typingSpeed); // Wait for the typing to finish
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Verify that the textArea contains the entire message
+        assertEquals(message, textArea.getText().trim());
+    }
 
 }
