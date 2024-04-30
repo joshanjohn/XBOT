@@ -1,10 +1,9 @@
 package view;
 
+import javax.swing.*;
 import java.util.List;
-import javax.swing.JTextArea;
-import javax.swing.SwingWorker;
 
-public class TypingEffect extends SwingWorker<Void, Character>{
+public class TypingEffect extends SwingWorker<Void, Character> {
     private JTextArea textArea;
     private String message;
     private int typingSpeed;
@@ -24,10 +23,13 @@ public class TypingEffect extends SwingWorker<Void, Character>{
         return null;
     }
 
-
     @Override
     protected void process(List<Character> chunks) {
-
+        StringBuilder sb = new StringBuilder();
+        for (Character c : chunks) {
+            sb.append(c);
+        }
+        textArea.append(sb.toString());
     }
-
 }
+
