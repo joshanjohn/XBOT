@@ -2,6 +2,7 @@ package view;
 
 import java.util.List;
 import javax.swing.JTextArea;
+import javax.swing.SwingWorker;
 
 public class TypingEffect extends SwingWorker<Void, Character>{
     private JTextArea textArea;
