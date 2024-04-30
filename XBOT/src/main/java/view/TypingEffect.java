@@ -1,5 +1,9 @@
 package view;
 
-public class TypingEffect {
+import javax.swing.JTextArea;
 
+public class TypingEffect {
+    private JTextArea textArea;
+    private String message;
+    private int typingSpeed;
 }
