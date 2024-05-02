@@ -29,7 +29,7 @@ public class Recommendation {
 				} else {
 					data.append("\n\n\n" + weatherSummary(date, temp, weatherCondition, wind));
 				}
-				data.append("\n\n\tRecommendations for this day");
+				data.append("\n\n\tRecommendations:-");
 				data.append("\n\t" + clothes(temp, weatherCondition, wind));
 			}
 			return data.toString();
@@ -49,8 +49,8 @@ public class Recommendation {
 	 * @return A formatted weather summary string.
 	 */
 	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t> On " + generateDate(date) + ", the weather with most feel like \n\ttemperature of " + temp
-				+ "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind
+		return "\n\t>" + generateDate(date) + " ->  " + temp
+				+ "°C," + condition + " weather \n\twind speed -> " + wind
 				+ "km/h.";
 	}
 
@@ -80,19 +80,19 @@ public class Recommendation {
 		}
 		// Different results according to temperature
 		if (temp > 20)
-			recommendation += "It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. ";
+			recommendation += "Its hot! Wear light clothes, like shorts and t-shirt.";
 		else if (temp < 20 && temp >= 15)
-			recommendation += "It is warm, but not hot. Wear something light but take the jacket.";
+			recommendation += "Its warm, not hot. Wear light with light jacket.";
 		else if (temp < 15 && temp >= 10)
-			recommendation += "It is a little bit cold. Wear something light that warms you, \n\tlike a long-sleeved shirt with a sweater or fleece, topped with a jacket. ";
+			recommendation += "Its bit cold. Wear warm, like long-sleeved shirt with sweater & jacket. ";
 		else if (temp < 10 && temp >= 0)
-			recommendation += "It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. ";
+			recommendation += "Its cold! Wear warm, like sweater & warm jacket. ";
 		else
-			recommendation += "It is freezing! Wear something really warm. Don't forget about the gloves, a scarf and a cap. ";
+			recommendation += "Its freezing! Wear really warm. Get gloves, scarf & cap. ";
 		// Using also weather condition
 		if (weatherCondition.toLowerCase().contains("rainy")
 				|| weatherCondition.toLowerCase().contains("rain"))
-			recommendation += "\n\tIt is also rainy, so don't forget about umbrella!";
+			recommendation += "\n\tIt is raining, take umbrella!";
 
 		return recommendation;
 	}

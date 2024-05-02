@@ -32,7 +32,6 @@ class TypingEffectTest {
 	void tearDown() throws Exception {
 	}
 
-	
 	@Test
     public void testDoInBackground() {
         // Create a JTextArea for testing
@@ -62,7 +61,6 @@ class TypingEffectTest {
         assertEquals(message, textArea.getText().trim());
     }
 
-	
     @Test
     public void testProcess() {
         // Create a JTextArea for testing
