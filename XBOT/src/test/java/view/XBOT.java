@@ -14,6 +14,7 @@ public class XBOT extends JPanel implements ActionListener {
     private JTextArea chatArea;
     private JScrollPane scrollPane;
     private boolean destinationEntered = false;
+    private String userName; // Store user's name for personalization *
 
     public XBOT() {
         setLayout(new BorderLayout());
@@ -51,8 +52,11 @@ public class XBOT extends JPanel implements ActionListener {
         add(scrollPane, BorderLayout.CENTER);
         add(inputPanel, BorderLayout.SOUTH);
 
-        chatArea.append("XBOT: " + generateGreeting() + "\n");
-        xbotReply("Enter the destination"); // Call xbotReply method to display a message
+        // Greet the user based on the time of day
+        chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
+        xbotReply("I am XBOT. I will be giving you the weather forecast.");
+        xbotReply("Enter your name");
+        inputField.setText("");
     }
 
     protected String generateGreeting() {
@@ -73,23 +77,34 @@ public class XBOT extends JPanel implements ActionListener {
         return greeting;
     }
 
-
     // Prints the reply for user
     public void xbotReply(String message) {
         chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
-    private void sendMessage(String input) {
-        try {
-            chatArea.append("You: " + input + "\n");
-            inputField.setText(""); // Clear the input field after sending the message
-            String r = Recommendation.getRecommendation(input);
-            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 50);
-            typingEffect.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
+   private boolean sendMessage(String input) {
+        if (userName == null) {
+            // If we haven't got the user's name yet, set it and greet them personally
+            userName = input;
+            chatArea.append("You: " + userName + "\n");
+            xbotReply("Hello, " + userName + "! "+ " Such a lovely name");
+            xbotReply("Enter the location to get weather reoprts");
+            return true; // Successfully set user's name
+        } else {
+            try {
+                chatArea.append("You: " + input + "\n");
+                inputField.setText("");
+                String r = Recommendation.getRecommendation(input);
+                xbotReply(r);
+                xbotReply("Enter the city name to get weather reoprts");
+                return true; // Successfully sent message and received response
+            } catch (Exception e) {
+                xbotReply("Sorry, I couldn't process your request. Please try again.");
+                return false; // Error occurred while processing message
+            }
         }
     }
+
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
