@@ -13,7 +13,6 @@ public class XBOT extends JPanel implements ActionListener {
     private PlaceholderTextField inputField;
     private JTextArea chatArea;
     private JScrollPane scrollPane;
-    private boolean destinationEntered = false;
     private boolean userName = false; // Store user's name for personalization *
 
     public XBOT() {
