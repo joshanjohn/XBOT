@@ -14,7 +14,7 @@ public class XBOT extends JPanel implements ActionListener {
     private JTextArea chatArea;
     private JScrollPane scrollPane;
     private boolean destinationEntered = false;
-    private String userName; // Store user's name for personalization *
+    private boolean userName = false; // Store user's name for personalization *
 
     public XBOT() {
         setLayout(new BorderLayout());
@@ -82,4 +82,36 @@ public class XBOT extends JPanel implements ActionListener {
         chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
-   
+    // private boolean sendMessage(String input) {
+    //     try {
+    //         chatArea.append("You: " + input + "\n");
+    //         inputField.setText(""); // Clear the input field after sending the message *
+    
+    //         // Check if the user's name has been entered
+    //         if (!nameEntered) {
+    //             xbotReply("XBOT: Nice to meet you, " + input + "!");
+    //             xbotReply("XBOT: Enter the destination");
+    //             nameEntered = true;
+    //         } else {
+    //             String r = Recommendation.getRecommendation(input);
+    //             TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
+    //             typingEffect.execute();
+    //         }
+    //         return true; // Message sent successfully
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         return false; // Failed to send message
+    //     }
+    // }
+    
+//* */
+// public void actionPerformed(ActionEvent e) {
+//     if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
+//         String input = inputField.getText().trim();
+//         if (!input.isEmpty() && !input.equals("Type here")) {
+//             sendMessage(input);
+//         }
+//     }
+// }
+// }
+}
