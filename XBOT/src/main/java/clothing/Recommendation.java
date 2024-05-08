@@ -35,7 +35,7 @@ public class Recommendation {
 			return data.toString();
 		} catch (Exception e) {
 		}
-		data.replace(0, data.length(), "No data found");
+		data.replace(0, data.length(), "No data found. Use '-' for eg:- new-york to get data" );
 		return data.toString();
 	}
 
