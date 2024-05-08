@@ -82,4 +82,20 @@ public class XBOT extends JPanel implements ActionListener {
         chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
+    private boolean sendMessage(String input) {
+        try {
+            chatArea.append("You: " + input + "\n");
+            inputField.setText(""); // Clear the input field after sending the message *
+        }    
+        // Check if the user's name has been entered
+        if (!userName) {
+            xbotReply("XBOT: Nice to meet you, " + input + "!");
+            xbotReply("XBOT: Enter the destination");
+            userName = true;
+        } else {
+            String r = Recommendation.getRecommendation(input);
+            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
+            typingEffect.execute();
+        }
+}
 }
