@@ -88,8 +88,8 @@ public class XBOT extends JPanel implements ActionListener {
     
             // Check if the user's name has been entered
             if (!userName) {
-                xbotReply("XBOT: Nice to meet you, " + input + "!");
-                xbotReply("XBOT: Enter the destination");
+                xbotReply("Nice to meet you, " + input + "!");
+                xbotReply("Enter the destination");
                 userName = true;
             } else {
                 String r = Recommendation.getRecommendation(input);

@@ -84,6 +84,7 @@ public class XBOT extends JPanel implements ActionListener {
     private boolean sendMessage(String input) {
         try {
             chatArea.append("You: " + input + "\n");
+            xbotReply("XBOT: Such a lovely name " + input + "!");
             inputField.setText(""); // Clear the input field after sending the message *
     
             // Check if the user's name has been entered
