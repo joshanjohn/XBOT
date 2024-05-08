@@ -37,7 +37,7 @@ public class XBOT extends JPanel implements ActionListener {
         // Add a border around the input field
         inputField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 2), // Outer border
-                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Inner margin
+                BorderFactory.createEmptyBorder(5, 5, 5, 5) // Inner margin
         ));
 
         // Create OK button
@@ -82,42 +82,4 @@ public class XBOT extends JPanel implements ActionListener {
         chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
-   private boolean sendMessage(String input) {
-        if (userName == null) {
-            // If we haven't got the user's name yet, set it and greet them personally
-            userName = input;
-            chatArea.append("You: " + userName + "\n");
-            xbotReply("Hello, " + userName + "! "+ " Such a lovely name");
-            xbotReply("Enter the location to get weather reoprts");
-            return true; // Successfully set user's name
-        } else {
-            try {
-                chatArea.append("You: " + input + "\n");
-                inputField.setText("");
-                String r = Recommendation.getRecommendation(input);
-                xbotReply(r);
-                xbotReply("Enter the city name to get weather reoprts");
-                return true; // Successfully sent message and received response
-            } catch (Exception e) {
-                xbotReply("Sorry, I couldn't process your request. Please try again.");
-                return false; // Error occurred while processing message
-            }
-        }
-    }
-
-
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
-            String input = inputField.getText().trim();
-            if (!input.isEmpty() && !input.equals("Type here")) {
-                if (destinationEntered) {
-                    sendMessage(input);
-                    destinationEntered = false;
-                } else {
-                    sendMessage(input);
-                    destinationEntered = true;
-                }
-            }
-        }
-    }
-}
+   
