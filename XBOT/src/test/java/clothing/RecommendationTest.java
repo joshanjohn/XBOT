@@ -97,11 +97,11 @@ class RecommendationTest {
 	@Test
 	public void clothesTest() {
 		// Test cases for different temperature, weather conditions, and wind speeds
-		assertEquals("It is hot! Wear something light, like shorts and t-shirt. Don't forget about headdress. ",
+		assertEquals("Its hot! Wear light clothes, like shorts and t-shirt.",
 				Recommendation.clothes(25.0, "Sunny", 5.0)); // Light wind, hot temperature
-		assertEquals("It is warm, but not hot. Wear something light but take the jacket.",
+		assertEquals("Its warm, not hot. Wear light with light jacket.",
 				Recommendation.clothes(18.0, "Partly cloudy", 15.0)); // Moderate wind, warm temperature
-		assertEquals("It is cold! Wear something warm, like sweater, topped with warm jacket and jeans. ",
+		assertEquals("Its bit cold. Wear warm, like long-sleeved shirt with sweater & jacket. ",
 				Recommendation.clothes(8.0, "Cloudy with showers", 30.0)); // Strong wind, cold temperature
 		assertEquals("IT IS STORM! Stay at home!",
 				Recommendation.clothes(8.0, "Cloudy with showers", 120.0));// Storm
