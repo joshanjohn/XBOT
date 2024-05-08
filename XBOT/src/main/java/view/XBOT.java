@@ -103,4 +103,14 @@ public class XBOT extends JPanel implements ActionListener {
         e.printStackTrace();
         return false; // Failed to send message
     }
+
+    // * */
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
+            String input = inputField.getText().trim();
+            if (!input.isEmpty() && !input.equals("Type here")) {
+                sendMessage(input);
+            }
+        }
+    }
 }
