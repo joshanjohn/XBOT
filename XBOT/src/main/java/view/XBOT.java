@@ -86,23 +86,24 @@ public class XBOT extends JPanel implements ActionListener {
         try {
             chatArea.append("You: " + input + "\n");
             inputField.setText(""); // Clear the input field after sending the message *
-        }    
-        // Check if the user's name has been entered
-        if (!userName) {
-            xbotReply("XBOT: Nice to meet you, " + input + "!");
-            xbotReply("XBOT: Enter the destination");
-            userName = true;
-        } else {
-            String r = Recommendation.getRecommendation(input);
-            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
-            typingEffect.execute();
+    
+            // Check if the user's name has been entered
+            if (!userName) {
+                xbotReply("XBOT: Nice to meet you, " + input + "!");
+                xbotReply("XBOT: Enter the destination");
+                userName = true;
+            } else {
+                String r = Recommendation.getRecommendation(input);
+                TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
+                typingEffect.execute();
+            }
+            return true; // Message sent successfully
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // Failed to send message
         }
-        return true; // Message sent successfully
-    }catch(Exception e)
-    {
-        e.printStackTrace();
-        return false; // Failed to send message
     }
+    
 
     // * */
     public void actionPerformed(ActionEvent e) {
