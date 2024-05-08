@@ -97,5 +97,10 @@ public class XBOT extends JPanel implements ActionListener {
             TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
             typingEffect.execute();
         }
-}
+        return true; // Message sent successfully
+    }catch(Exception e)
+    {
+        e.printStackTrace();
+        return false; // Failed to send message
+    }
 }
