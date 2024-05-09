@@ -1,117 +1,75 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Calendar;
 
-import clothing.Recommendation;
+import javax.swing.JTextArea;
 
-public class XBOT extends JPanel implements ActionListener {
-    private PlaceholderTextField inputField;
-    private JTextArea chatArea;
-    private JScrollPane scrollPane;
-    private boolean userName = false; // Store user's name for personalization *
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    public XBOT() {
-        setLayout(new BorderLayout());
+class XBOTTest {
 
-        chatArea = new JTextArea();
-        chatArea.setEditable(false);
-        chatArea.setLineWrap(true);
-        chatArea.setFont(new Font("Arial", Font.PLAIN, 16));
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+	}
 
-        scrollPane = new JScrollPane(chatArea);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	}
 
-        inputField = new PlaceholderTextField("Type here");
-        inputField.addActionListener(this);
-        inputField.setFont(new Font("Arial", Font.BOLD, 22));
+	@BeforeEach
+	void setUp() throws Exception {
+	}
 
-        // Increase the size of the input field
-        inputField.setPreferredSize(new Dimension(300, 80)); // Increase the height to 80 pixels
+	@AfterEach
+	void tearDown() throws Exception {
+	}
 
-        // Add a border around the input field
-        inputField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.BLACK, 2), // Outer border
-                BorderFactory.createEmptyBorder(5, 5, 5, 5) // Inner margin
-        ));
+	@Test
+	void testGenerateGreeting() {
+		XBOT xbot = new XBOT();
+		// testing if the generateGreeting method
+		assertNotNull(xbot.generateGreeting()); // check if there is any out put
 
-        // Create OK button
-        JButton okButton = new JButton("OK");
-        okButton.addActionListener(this);
+		// testing the method greetings
+		String expectedGreeting;
+		Calendar calendar = Calendar.getInstance(); // Getting the current calendar instance
+		int hour = calendar.get(Calendar.HOUR_OF_DAY); // Getting the current hour of the day
+		if (hour >= 0 && hour < 12) { // Checking if it's morning
+			expectedGreeting = "Good morning!"; // expected Greeting is morning greeting
+		} else if (hour >= 12 && hour < 18) { // Checking if it's afternoon
+			expectedGreeting = "Good afternoon!"; // expected Greeting is afternoon greeting
+		} else { // Assuming it's evening
+			expectedGreeting = "Good evening!"; // expected Greeting is evening greeting
+		}
 
-        JPanel inputPanel = new JPanel(new BorderLayout());
-        inputPanel.add(inputField, BorderLayout.CENTER);
-        inputPanel.add(okButton, BorderLayout.EAST);
-        inputPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		assertEquals(expectedGreeting, xbot.generateGreeting());
+	}
 
-        add(scrollPane, BorderLayout.CENTER);
-        add(inputPanel, BorderLayout.SOUTH);
+	//test method for xbotReply
+	@Test
+	void testXbotReply() throws NoSuchFieldException, IllegalAccessException {
+		//Creating new XBOT
+		XBOT xbot = new XBOT();
+		//Creating a JTextArea to simulate the chat area
+		JTextArea chatArea = new JTextArea(); 
 
-        // Greet the user based on the time of day
-        chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
-        xbotReply("I am XBOT. I will be giving you the weather forecast.");
-        xbotReply("Enter your name");
-        inputField.setText("");
-    }
+		// Using reflection to access the private field chatArea
+		java.lang.reflect.Field field = XBOT.class.getDeclaredField("chatArea");
+		field.setAccessible(true);
+		field.set(xbot, chatArea);
 
-    protected String generateGreeting() {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        String greeting;
+		String message = "Test message";
 
-        if (hour >= 5 && hour < 12) {
-            greeting = "Good morning!";
-        } else if (hour >= 12 && hour < 17) {
-            greeting = "Good afternoon!";
-        } else if (hour >= 17 && hour < 21) {
-            greeting = "Good evening!";
-        } else {
-            greeting = "Good night!";
-        }
+		//Test case
+		xbot.xbotReply(message);
+		String expected = "XBOT: " + message + "\n";
+		assertEquals(expected, chatArea.getText());
+	}
 
-        return greeting;
-    }
-
-    // Prints the reply for user
-    public void xbotReply(String message) {
-        chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
-    }
-
-    private boolean sendMessage(String input) {
-        try {
-            chatArea.append("You: " + input + "\n");
-            xbotReply("XBOT: Such a lovely name " + input + "!");
-            inputField.setText(""); // Clear the input field after sending the message *
-    
-            // Check if the user's name has been entered
-            if (!userName) {
-                xbotReply("XBOT: Nice to meet you, " + input + "!");
-                xbotReply("XBOT: Enter the destination");
-                userName = true;
-            } else {
-                String r = Recommendation.getRecommendation(input);
-                TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
-                typingEffect.execute();
-            }
-            return true; // Message sent successfully
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; // Failed to send message
-        }
-    }
-    
-
-    // * */
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
-            String input = inputField.getText().trim();
-            if (!input.isEmpty() && !input.equals("Type here")) {
-                sendMessage(input);
-            }
-        }
-    }
 }
