@@ -22,5 +22,9 @@ public class Validation {
         else 
             return false;
     }
+
+    public static String removeSpace(String input) {
+        return null;
+    }
     
 }
