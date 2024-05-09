@@ -24,7 +24,12 @@ public class Validation {
     }
 
     public static String removeSpace(String input) {
-        return null;
+        // Trim leading and trailing spaces
+        String trimmed = input.trim();
+        // Replace spaces with hyphens
+        String replaced = trimmed.replaceAll("\\s+", "-");
+        
+        return replaced;
     }
     
 }
