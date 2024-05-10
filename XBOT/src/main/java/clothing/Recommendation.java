@@ -90,19 +90,19 @@ public class Recommendation {
 
 		// Wind case
 		if (windResult == 3)
-			recommendation += "Also, due to wind it may feel a little bit cooler";
+			recommendation += "\n\tAlso, due to wind it may feel a little bit cooler";
 
 		// Rain case
 		if (rainResult)
-			recommendation += "Don't forget about umbrella!";
+			recommendation += "\n\tDon't forget about the umbrella!";
 
 		// Sun case
 		if (sunResult && (tempResult == 1 || tempResult == 2))
-			recommendation += "I also recommend you to take the cap.";
+			recommendation += "\n\tI also recommend you to take the cap.";
 
 		// Snow case
 		if (snowResult)
-			recommendation += "EXTRA RECOMENDATION :) It s snowing, so try to build a snowman!!";
+			recommendation += "\n\tEXTRA RECOMENDATION :) It s snowing, so try to build a snowman!!";
 		return recommendation;
 
 	}
