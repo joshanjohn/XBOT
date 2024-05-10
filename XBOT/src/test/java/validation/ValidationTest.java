@@ -43,4 +43,25 @@ class ValidationTest {
         assertFalse(validator.isValidCity("123"));
     }
 
+	@Test
+    public void testRemoveSpace() {
+        // Test with leading and trailing spaces
+        String input1 = "  new york  ";
+        String expectedOutput1 = "new-york";
+        String actualOutput1 = Validation.removeSpace(input1);
+        assertEquals(expectedOutput1, actualOutput1);
+        
+        // Test with an empty string
+        String input2 = "";
+        String expectedOutput2 = "";
+        String actualOutput2 = Validation.removeSpace(input2);
+        assertEquals(expectedOutput2, actualOutput2);
+        
+        // Test with no spaces
+        String input3 = "hello";
+        String expectedOutput3 = "hello";
+        String actualOutput3 = Validation.removeSpace(input3);
+        assertEquals(expectedOutput3, actualOutput3);
+    }
+
 }
