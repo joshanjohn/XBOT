@@ -2,7 +2,6 @@ package view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.text.DateFormat.Field;
 import java.util.Calendar;
 
 import javax.swing.JTextArea;
