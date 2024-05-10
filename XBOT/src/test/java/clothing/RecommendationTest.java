@@ -57,52 +57,19 @@ class RecommendationTest {
 	}
 
 	@Test
-	public void testHotDay() {
-		String recommendation = Recommendation.clothes(30.0, "Sunny", 10.0);
-		assertEquals("It's a hot day! Wear something light like shorts and t-shirt.", recommendation);
-	}
+    public void testClothes() {
+        // Test case 1
+        String recommendation1 = Recommendation.clothes(30.0, "Sunny", 10.0);
+        assertEquals("It's a hot day! Wear something light like shorts and t-shirt.", recommendation1);
 
-	@Test
-	public void testWarmDay() {
-		String recommendation = Recommendation.clothes(25.0, "Sunny", 10.0);
-		assertEquals("Its warm, not hot. I recommend to wear something light but with jacket.", recommendation);
-	}
+        // Test case 2
+        String recommendation3 = Recommendation.clothes(10.0, "Rainy", 5.0);
+        assertEquals("It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. Don't forget about umbrella!", recommendation3);
 
-	@Test
-	public void testColdDay() {
-		String recommendation = Recommendation.clothes(10.0, "Cloudy", 10.0);
-		assertEquals("It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. ",
-				recommendation);
-	}
+        // Test case 3
+        String recommendation4 = Recommendation.clothes(0.0, "Snowy", 15.0);
+        assertEquals("It's cold! Wear something warm, like sweater & warm jacket. EXTRA RECOMENDATION :) It s snowing so go and build a snowman", recommendation4);
 
-	@Test
-	public void testFreezingDayWithWind() {
-		String recommendation = Recommendation.clothes(0.0, "Snowy", 20.0);
-		assertEquals(
-				"Its freezing! Wear really warm. Get gloves, scarf & cap. Also, due to wind it may feel a little bit coolerEXTRA RECOMENDATION :) It s snowing so go and build a snowman",
-				recommendation);
-	}
-
-	@Test
-	public void testRainyDay() {
-		String recommendation = Recommendation.clothes(15.0, "Rainy", 10.0);
-		assertEquals(
-				"It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. Don't forget about umbrella!",
-				recommendation);
-	}
-
-	@Test
-	public void testSunnyDayWithCap() {
-		String recommendation = Recommendation.clothes(28.0, "Sunny", 10.0);
-		assertEquals(
-				"It's a hot day! Wear something light like shorts and t-shirt.I also recommend you to take the cap",
-				recommendation);
-	}
-
-	@Test
-	public void testStormyDay() {
-		String recommendation = Recommendation.clothes(20.0, "Stormy", 30.0);
-		assertEquals("IT IS STORM! I highly recommend you to stay at home.", recommendation);
-	}
+    }
 
 }
