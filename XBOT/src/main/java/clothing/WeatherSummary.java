@@ -13,12 +13,11 @@ public class WeatherSummary {
 	 * @return A formatted weather summary string.
 	 */
 
-	 
-    protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t>" + Recommendation.generateDate(date) + " ->  " + temp
-				+ "°C," + condition + " weather \n\twind speed -> " + wind
-				+ "km/h.";
-	}
+
+     protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
+        return "\n\t> On " + Recommendation.generateDate(date) + ", -> " + temp + "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind + "km/h.";
+    }
+
     public static int analyseWind(Double wind) {
 		// method that returns wind description according to its speed
 

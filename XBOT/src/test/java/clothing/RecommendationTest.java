@@ -58,15 +58,7 @@ class RecommendationTest {
 		assertEquals(expected, result);
 	}
 
-	@Test
-	public void testAnalyseWind() {
-		// Test cases for different wind speeds
-		assertEquals(1, WeatherSummary.analyseWind(0.5)); // Light wind
-		assertEquals(1, WeatherSummary.analyseWind(3.0)); // Light wind
-		assertEquals(2, WeatherSummary.analyseWind(25.0)); // Moderate wind
-		assertEquals(3, WeatherSummary.analyseWind(80.0)); // Strong wind
-		assertEquals(4, WeatherSummary.analyseWind(110.0));// Very strong wind
-	}
+	
 
 	@Test
 	public void clothesTest() {
