@@ -61,6 +61,24 @@ class WeatherSummaryTest {
 		assertEquals(4, WeatherSummary.analyseWind(110.0));// Very strong wind
 	}
 
+	@Test
+    public void testIsRaining() {
+        // Test case 1: Weather condition contains "rainy"
+        assertTrue(WeatherSummary.isRaining("Heavy Rainy")); // Should return true
+
+        // Test case 2: Weather condition contains "rain"
+        assertTrue(WeatherSummary.isRaining("Scattered showers and rain")); // Should return true
+
+        // Test case 3: Weather condition does not contain "rainy" or "rain"
+        assertFalse(WeatherSummary.isRaining("Partly cloudy")); // Should return false
+
+        // Test case 4: Weather condition is empty
+        assertFalse(WeatherSummary.isRaining("")); // Should return false
+
+        // Test case 5: Weather condition is null
+        assertFalse(WeatherSummary.isRaining(null)); // Should return false
+    }
+
 
 
 }
