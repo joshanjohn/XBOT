@@ -72,10 +72,10 @@ public class Recommendation {
 		//Temperature cases
 		switch (tempResult) {
 			case 1:
-				recommendation += "It's a hot day! Wear something light like shorts and t-shirt.";
+				recommendation += "It's a hot day! Wear something light like shorts and t-shirt. ";
 				break;
 			case 2:
-				recommendation += "It's warm, not hot. I recommend to wear something light but with jacket.";
+				recommendation += "It's warm, not hot. I recommend to wear something light but with jacket. ";
 				break;
 			case 3:
 				recommendation += "It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. ";
@@ -97,12 +97,12 @@ public class Recommendation {
 			recommendation += "Don't forget about umbrella!";
 		
 		//Sun case
-		if(sunResult && (temp == 1 || temp == 2))
-			recommendation += "I also recommend you to take the cap";
+		if(sunResult && (tempResult == 1 || tempResult == 2))
+			recommendation += "I also recommend you to take the cap.";
 		
 		//Snow case
 		if(snowResult)
-			recommendation += "EXTRA RECOMENDATION :) It s snowing so go and build a snowman";
+			recommendation += "EXTRA RECOMENDATION :) It s snowing, so try to build a snowman!!";
 		return recommendation;
 	
 	}
