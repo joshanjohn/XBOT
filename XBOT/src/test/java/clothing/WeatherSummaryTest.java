@@ -79,27 +79,47 @@ class WeatherSummaryTest {
 	}
 
 	@Test
-    public void testIsSunny() {
-        // Test case 1: Weather condition contains "sunny"
-        assertTrue(WeatherSummary.isSunny("Bright and sunny day")); // Should return true
+	public void testIsSunny() {
+		// Test case 1: Weather condition contains "sunny"
+		assertTrue(WeatherSummary.isSunny("Bright and sunny day")); // Should return true
 
-        // Test case 2: Weather condition does not contain "sunny"
-        assertFalse(WeatherSummary.isSunny("Cloudy with scattered showers")); // Should return false
+		// Test case 2: Weather condition does not contain "sunny"
+		assertFalse(WeatherSummary.isSunny("Cloudy with scattered showers")); // Should return false
 
-        // Test case 3: Weather condition is empty
-        assertFalse(WeatherSummary.isSunny("")); // Should return false
-    }
+		// Test case 3: Weather condition is empty
+		assertFalse(WeatherSummary.isSunny("")); // Should return false
+	}
 
 	@Test
-    public void testIsSnowy() {
-        // Test case 1: Weather condition contains "snow"
-        assertTrue(WeatherSummary.isSnowy("Heavy snowfall expected")); // Should return true
+	public void testIsSnowy() {
+		// Test case 1: Weather condition contains "snow"
+		assertTrue(WeatherSummary.isSnowy("Heavy snowfall expected")); // Should return true
 
-        // Test case 2: Weather condition does not contain "snow"
-        assertFalse(WeatherSummary.isSnowy("Cold and clear")); // Should return false
+		// Test case 2: Weather condition does not contain "snow"
+		assertFalse(WeatherSummary.isSnowy("Cold and clear")); // Should return false
 
-        // Test case 3: Weather condition is empty
-        assertFalse(WeatherSummary.isSnowy("")); // Should return false
-    }
+		// Test case 3: Weather condition is empty
+		assertFalse(WeatherSummary.isSnowy("")); // Should return false
+	}
+
+	@Test
+	public void testTemp() {
+
+		// Test case 1: Temperature greater than 20
+		assertEquals(1, WeatherSummary.temp(25.0));
+
+		// Test case 2: Temperature between 15 and 20
+		assertEquals(2, WeatherSummary.temp(18.0));
+
+		// Test case 3: Temperature between 10 and 15
+		assertEquals(3, WeatherSummary.temp(12.0));
+
+		// Test case 4: Temperature between 0 and 10
+		assertEquals(4, WeatherSummary.temp(5.0));
+
+		// Test case 5: Temperature less than 0
+		assertEquals(5, WeatherSummary.temp(-5.0));
+
+	}
 
 }
