@@ -25,9 +25,9 @@ public class Recommendation {
 				String weatherCondition = forecastDay.getWeatherCondition();
 				Double wind = forecastDay.getWind();
 				if (i == 0) {
-					data.append(weatherSummary(date, temp, weatherCondition, wind));
+					data.append(WeatherSummary.weatherSummary(date, temp, weatherCondition, wind));
 				} else {
-					data.append("\n\n\n" + weatherSummary(date, temp, weatherCondition, wind));
+					data.append("\n\n\n" + WeatherSummary.weatherSummary(date, temp, weatherCondition, wind));
 				}
 				data.append("\n\n\tRecommendations:-");
 				data.append("\n\t" + clothes(temp, weatherCondition, wind));
@@ -35,23 +35,8 @@ public class Recommendation {
 			return data.toString();
 		} catch (Exception e) {
 		}
-		data.replace(0, data.length(), "No data found");
-		return data.toString();
-	}
 
-	/**
-	 * Generates a weather summary based on provided parameters.
-	 *
-	 * @param date      The date for which the weather summary is generated.
-	 * @param temp      The temperature for the given date.
-	 * @param condition The weather condition for the given date.
-	 * @param wind      The wind speed for the given date.
-	 * @return A formatted weather summary string.
-	 */
-	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t>" + generateDate(date) + " ->  " + temp
-				+ "°C," + condition + " weather \n\twind speed -> " + wind
-				+ "km/h.";
+		return data.toString();
 	}
 
 	// function to convert the date String into the desired format
@@ -70,72 +55,56 @@ public class Recommendation {
 
 	protected static String clothes(Double temp, String weatherCondition, Double wind) {
 		// Creating variables
-		int windResult = analyseWind(wind);
+		int windResult = WeatherSummary.analyseWind(wind);
+		int tempResult = WeatherSummary.temp(temp);
+		boolean rainResult = WeatherSummary.isRaining(weatherCondition);
+		boolean sunResult = WeatherSummary.isSunny(weatherCondition);
+		boolean snowResult = WeatherSummary.isSnowy(weatherCondition);
 		String recommendation = "";
 
 		// Analysing wind speed
 		if (windResult == 4) {
-			recommendation += "IT IS STORM! Stay at home!";
+			recommendation += "IT IS STORM! I highly recommend you to stay at home.";
 			return recommendation;
 		}
-		// Different results according to temperature
-		if (temp > 20)
-			recommendation += "Its hot! Wear light clothes, like shorts and t-shirt.";
-		else if (temp < 20 && temp >= 15)
-			recommendation += "Its warm, not hot. Wear light with light jacket.";
-		else if (temp < 15 && temp >= 10)
-			recommendation += "Its bit cold. Wear warm, like long-sleeved shirt with sweater & jacket. ";
-		else if (temp < 10 && temp >= 0)
-			recommendation += "Its cold! Wear warm, like sweater & warm jacket. ";
-		else
-			recommendation += "Its freezing! Wear really warm. Get gloves, scarf & cap. ";
-		// Using also weather condition
-		if (weatherCondition.toLowerCase().contains("rainy")
-				|| weatherCondition.toLowerCase().contains("rain"))
-			recommendation += "\n\tIt is raining, take umbrella!";
+		// Different results according to weather conditions
 
+		// Temperature cases
+		switch (tempResult) {
+			case 1:
+				recommendation += "It's a hot day! Wear something light like shorts and t-shirt. ";
+				break;
+			case 2:
+				recommendation += "It's warm, not hot. I recommend to wear something light but with jacket. ";
+				break;
+			case 3:
+				recommendation += "It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. ";
+				break;
+			case 4:
+				recommendation += "It's cold! Wear something warm, like sweater & warm jacket. ";
+				break;
+			case 5:
+				recommendation += "Its freezing! Wear really warm. Get gloves, scarf & cap. ";
+				break;
+		}
+
+		// Wind case
+		if (windResult == 3)
+			recommendation += "\n\tAlso, due to wind it may feel a little bit cooler";
+
+		// Rain case
+		if (rainResult)
+			recommendation += "\n\tDon't forget about the umbrella!";
+
+		// Sun case
+		if (sunResult && (tempResult == 1 || tempResult == 2))
+			recommendation += "\n\tI also recommend you to take the cap.";
+
+		// Snow case
+		if (snowResult)
+			recommendation += "\n\tEXTRA RECOMENDATION :) It s snowing, so try to build a snowman!!";
 		return recommendation;
-	}
 
-	protected static int analyseWind(Double wind) {
-		// method that returns wind description according to its speed
-
-		/*
-		 * method that returns wind description according to its speed
-		 * groups:
-		 * 1 means the light wind
-		 * 2 means the moderate wind
-		 * 3 means strong wind
-		 * 4 means very strong wind
-		 */
-
-		if (wind <= 1 && wind >= 0)
-			return 1;
-		else if (wind <= 5 && wind > 1)
-			return 1;
-		else if (wind <= 11 && wind > 5)
-			return 1;
-		else if (wind <= 19 && wind > 11)
-			return 1;
-		else if (wind <= 29 && wind > 19)
-			return 2;
-		else if (wind <= 39 && wind > 29)
-			return 2;
-		else if (wind <= 49 && wind > 39)
-			return 2;
-		else if (wind <= 61 && wind > 49)
-			return 2;
-		else if (wind <= 74 && wind > 61)
-			return 3;
-		else if (wind <= 88 && wind > 74)
-			return 3;
-		else if (wind <= 102 && wind > 88)
-			return 4;
-		else if (wind <= 117 && wind > 102)
-			return 4;
-		else if (wind <= 134 && wind > 117)
-			return 4;
-		return 0;
 	}
 
 }

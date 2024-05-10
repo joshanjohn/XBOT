@@ -5,6 +5,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Validation.Validation;
 import java.util.Calendar;
 
 import clothing.Recommendation;
@@ -13,7 +14,7 @@ public class XBOT extends JPanel implements ActionListener {
     private PlaceholderTextField inputField;
     private JTextArea chatArea;
     private JScrollPane scrollPane;
-    private boolean destinationEntered = false;
+    private boolean userName = false; // Store user's name for personalization *
 
     public XBOT() {
         setLayout(new BorderLayout());
@@ -36,7 +37,7 @@ public class XBOT extends JPanel implements ActionListener {
         // Add a border around the input field
         inputField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 2), // Outer border
-                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Inner margin
+                BorderFactory.createEmptyBorder(5, 5, 5, 5) // Inner margin
         ));
 
         // Create OK button
@@ -51,8 +52,11 @@ public class XBOT extends JPanel implements ActionListener {
         add(scrollPane, BorderLayout.CENTER);
         add(inputPanel, BorderLayout.SOUTH);
 
-        chatArea.append("XBOT: " + generateGreeting() + "\n");
-        xbotReply("Enter the destination"); // Call xbotReply method to display a message
+        // Greet the user based on the time of day
+        chatArea.append("XBOT: " + generateGreeting() + "\n"); // Displaying a greeting message
+        xbotReply("I am XBOT. I will be giving you the weather forecast.");
+        xbotReply("Enter your name");
+        inputField.setText("");
     }
 
     protected String generateGreeting() {
@@ -73,35 +77,40 @@ public class XBOT extends JPanel implements ActionListener {
         return greeting;
     }
 
-
     // Prints the reply for user
     public void xbotReply(String message) {
         chatArea.append("XBOT: " + message + "\n"); // Displaying XBOT's message in the chat area
     }
 
-    private void sendMessage(String input) {
+    private boolean sendMessage(String input) {
         try {
             chatArea.append("You: " + input + "\n");
-            inputField.setText(""); // Clear the input field after sending the message
-            String r = Recommendation.getRecommendation(input);
-            TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
-            typingEffect.execute();
+            inputField.setText(""); // Clear the input field after sending the message *
+    
+            // Check if the user's name has been entered
+            if (!userName) {
+                xbotReply("Nice to meet you, " + input + "!");
+                xbotReply("Enter the destination");
+                userName = true;
+            } else {
+                String r = Recommendation.getRecommendation(Validation.removeSpace(input));
+                TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
+                typingEffect.execute();
+            }
+            return true; // Message sent successfully
         } catch (Exception e) {
             e.printStackTrace();
+            return false; // Failed to send message
         }
     }
+    
 
+    // * */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == inputField || e.getActionCommand().equals("OK")) {
             String input = inputField.getText().trim();
             if (!input.isEmpty() && !input.equals("Type here")) {
-                if (destinationEntered) {
-                    sendMessage(input);
-                    destinationEntered = false;
-                } else {
-                    sendMessage(input);
-                    destinationEntered = true;
-                }
+                sendMessage(input);
             }
         }
     }
