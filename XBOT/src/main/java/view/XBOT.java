@@ -5,6 +5,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Validation.Validation;
 import java.util.Calendar;
 
 import clothing.Recommendation;
@@ -92,7 +93,7 @@ public class XBOT extends JPanel implements ActionListener {
                 xbotReply("Enter the destination");
                 userName = true;
             } else {
-                String r = Recommendation.getRecommendation(input);
+                String r = Recommendation.getRecommendation(Validation.removeSpace(input));
                 TypingEffect typingEffect = new TypingEffect(chatArea, "XBOT: " + r + "\n\nXBOT: Enter a new destination: ", 5);
                 typingEffect.execute();
             }
