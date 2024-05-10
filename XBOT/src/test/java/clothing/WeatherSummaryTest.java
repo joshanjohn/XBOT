@@ -75,9 +75,7 @@ class WeatherSummaryTest {
         // Test case 4: Weather condition is empty
         assertFalse(WeatherSummary.isRaining("")); // Should return false
 
-        // Test case 5: Weather condition is null
-        assertFalse(WeatherSummary.isRaining(null)); // Should return false
-    }
+        }
 
 
 

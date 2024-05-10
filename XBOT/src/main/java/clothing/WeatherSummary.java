@@ -60,6 +60,6 @@ public class WeatherSummary {
 
 	// Method to check if it's raining
     protected static boolean isRaining(String weatherCondition) {
-        return false;
+        return weatherCondition.toLowerCase().contains("rainy") || weatherCondition.toLowerCase().contains("rain");
     }
 }
