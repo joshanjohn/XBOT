@@ -2,7 +2,23 @@ package clothing;
 
 public class WeatherSummary {
 
-    
+
+	/**
+	 * Generates a weather summary based on provided parameters.
+	 *
+	 * @param date      The date for which the weather summary is generated.
+	 * @param temp      The temperature for the given date.
+	 * @param condition The weather condition for the given date.
+	 * @param wind      The wind speed for the given date.
+	 * @return A formatted weather summary string.
+	 */
+
+	 
+    protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
+		return "\n\t>" + Recommendation.generateDate(date) + " ->  " + temp
+				+ "°C," + condition + " weather \n\twind speed -> " + wind
+				+ "km/h.";
+	}
     public static int analyseWind(Double wind) {
 		// method that returns wind description according to its speed
 

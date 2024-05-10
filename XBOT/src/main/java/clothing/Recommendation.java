@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import model.ForecastDayModel;
 import model.WeatherForecastModel;
 import weather.WeatherAnalyzer;
-import clothing.WeatherSummary;
 
 public class Recommendation {
 
@@ -26,9 +25,9 @@ public class Recommendation {
 				String weatherCondition = forecastDay.getWeatherCondition();
 				Double wind = forecastDay.getWind();
 				if (i == 0) {
-					data.append(weatherSummary(date, temp, weatherCondition, wind));
+					data.append(WeatherSummary.weatherSummary(date, temp, weatherCondition, wind));
 				} else {
-					data.append("\n\n\n" + weatherSummary(date, temp, weatherCondition, wind));
+					data.append("\n\n\n" + WeatherSummary.weatherSummary(date, temp, weatherCondition, wind));
 				}
 				data.append("\n\n\tRecommendations:-");
 				data.append("\n\t" + clothes(temp, weatherCondition, wind));
@@ -40,20 +39,8 @@ public class Recommendation {
 		return data.toString();
 	}
 
-	/**
-	 * Generates a weather summary based on provided parameters.
-	 *
-	 * @param date      The date for which the weather summary is generated.
-	 * @param temp      The temperature for the given date.
-	 * @param condition The weather condition for the given date.
-	 * @param wind      The wind speed for the given date.
-	 * @return A formatted weather summary string.
-	 */
-	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-		return "\n\t>" + generateDate(date) + " ->  " + temp
-				+ "°C," + condition + " weather \n\twind speed -> " + wind
-				+ "km/h.";
-	}
+	
+	
 
 	// function to convert the date String into the desired format
 	protected static String generateDate(String dateString) {
