@@ -72,4 +72,10 @@ public class WeatherSummary {
 	protected static boolean isSnowy(String weatherCondition) {
 		return weatherCondition.toLowerCase().contains("snow");
 	}
+
+	//Method to give the info about temperature
+	protected static int temp(Double temp)
+	{
+		return 0;
+	}
 }
