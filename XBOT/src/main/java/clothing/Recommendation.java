@@ -35,12 +35,9 @@ public class Recommendation {
 			return data.toString();
 		} catch (Exception e) {
 		}
-		data.replace(0, data.length(), "No data found. Use '-' for eg:- new-york to get data" );
+		data.replace(0, data.length(), "No data found. Use '-' for eg:- new-york to get data");
 		return data.toString();
 	}
-
-	
-	
 
 	// function to convert the date String into the desired format
 	protected static String generateDate(String dateString) {
@@ -57,33 +54,7 @@ public class Recommendation {
 	}
 
 	protected static String clothes(Double temp, String weatherCondition, Double wind) {
-		// Creating variables
-		int windResult = WeatherSummary.analyseWind(wind);
-		String recommendation = "";
-
-		// Analysing wind speed
-		if (windResult == 4) {
-			recommendation += "IT IS STORM! Stay at home!";
-			return recommendation;
-		}
-		// Different results according to temperature
-		if (temp > 20)
-			recommendation += "Its hot! Wear light clothes, like shorts and t-shirt.";
-		else if (temp < 20 && temp >= 15)
-			recommendation += "Its warm, not hot. Wear light with light jacket.";
-		else if (temp < 15 && temp >= 10)
-			recommendation += "Its bit cold. Wear warm, like long-sleeved shirt with sweater & jacket. ";
-		else if (temp < 10 && temp >= 0)
-			recommendation += "Its cold! Wear warm, like sweater & warm jacket. ";
-		else
-			recommendation += "Its freezing! Wear really warm. Get gloves, scarf & cap. ";
-		// Using also weather condition
-		if (weatherCondition.toLowerCase().contains("rainy")
-				|| weatherCondition.toLowerCase().contains("rain"))
-			recommendation += "\n\tIt is raining, take umbrella!";
-
-		return recommendation;
+		return null;
 	}
 
-	
 }
