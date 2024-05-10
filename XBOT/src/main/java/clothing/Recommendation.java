@@ -54,7 +54,58 @@ public class Recommendation {
 	}
 
 	protected static String clothes(Double temp, String weatherCondition, Double wind) {
-		return null;
+		//Creating variables
+		int windResult = WeatherSummary.analyseWind(wind);
+		int tempResult = WeatherSummary.temp(temp);
+		boolean rainResult = WeatherSummary.isRaining(weatherCondition);
+		boolean sunResult = WeatherSummary.isSunny(weatherCondition);
+		boolean snowResult = WeatherSummary.isSnowy(weatherCondition);
+		String recommendation = "";
+
+		// Analysing wind speed
+		if (windResult == 4) {
+			recommendation += "IT IS STORM! I highly recommend you to stay at home.";
+			return recommendation;
+		}
+		// Different results according to weather conditions
+
+		//Temperature cases
+		switch (tempResult) {
+			case 1:
+				recommendation += "It's a hot day! Wear something light like shorts and t-shirt.";
+				break;
+			case 2:
+				recommendation += "It's warm, not hot. I recommend to wear something light but with jacket.";
+				break;
+			case 3:
+				recommendation += "It's a bit cold. Wear something warm, like long-sleeved shirt with sweater & jacket. ";
+				break;
+			case 4:
+				recommendation += "It's cold! Wear something warm, like sweater & warm jacket. ";
+				break;
+			case 5:
+				recommendation += "Its freezing! Wear really warm. Get gloves, scarf & cap. ";
+				break;
+		}
+
+		//Wind case
+		if (windResult == 3)
+			recommendation += "Also, due to wind it may feel a little bit cooler";
+
+		//Rain case
+		if(rainResult)
+			recommendation += "Don't forget about umbrella!";
+		
+		//Sun case
+		if(sunResult && (temp == 1 || temp == 2))
+			recommendation += "I also recommend you to take the cap";
+		
+		//Snow case
+		if(snowResult)
+			recommendation += "EXTRA RECOMENDATION :) It s snowing so go and build a snowman";
+		return recommendation;
+	
 	}
+		
 
 }
