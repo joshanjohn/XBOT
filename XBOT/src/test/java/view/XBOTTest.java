@@ -44,9 +44,12 @@ class XBOTTest {
 			expectedGreeting = "Good morning!"; // expected Greeting is morning greeting
 		} else if (hour >= 12 && hour < 18) { // Checking if it's afternoon
 			expectedGreeting = "Good afternoon!"; // expected Greeting is afternoon greeting
-		} else { // Assuming it's evening
+		} else if(hour >= 17 && hour < 21) { // Assuming it's evening
 			expectedGreeting = "Good evening!"; // expected Greeting is evening greeting
+		}else{
+			expectedGreeting = "Good night!"; // expected Greeting is night greeting
 		}
+
 
 		assertEquals(expectedGreeting, xbot.generateGreeting());
 	}
