@@ -2,7 +2,6 @@ package clothing;
 
 public class WeatherSummary {
 
-
 	/**
 	 * Generates a weather summary based on provided parameters.
 	 *
@@ -13,12 +12,12 @@ public class WeatherSummary {
 	 * @return A formatted weather summary string.
 	 */
 
+	protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
+		return "\n\t> On " + Recommendation.generateDate(date) + ", -> " + temp + "°C, \n\taccompanied by " + condition
+				+ " weather conditions and \n\ta wind speed of " + wind + "km/h.";
+	}
 
-     protected static String weatherSummary(String date, Double temp, String condition, Double wind) {
-        return "\n\t> On " + Recommendation.generateDate(date) + ", -> " + temp + "°C, \n\taccompanied by " + condition + " weather conditions and \n\ta wind speed of " + wind + "km/h.";
-    }
-
-    public static int analyseWind(Double wind) {
+	public static int analyseWind(Double wind) {
 		// method that returns wind description according to its speed
 
 		/*
@@ -58,4 +57,9 @@ public class WeatherSummary {
 			return 4;
 		return 0;
 	}
+
+	// Method to check if it's raining
+    protected static boolean isRaining(String weatherCondition) {
+        return false;
+    }
 }
