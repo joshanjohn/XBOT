@@ -67,4 +67,9 @@ public class WeatherSummary {
 	protected static boolean isSunny(String weatherCondition) {
 		return weatherCondition.toLowerCase().contains("sunny");
 	}
+
+	// Method to check if it's snowing
+	protected static boolean isSnowy(String weatherCondition) {
+		return false;
+	}
 }
