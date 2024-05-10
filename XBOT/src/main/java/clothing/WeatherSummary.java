@@ -70,6 +70,6 @@ public class WeatherSummary {
 
 	// Method to check if it's snowing
 	protected static boolean isSnowy(String weatherCondition) {
-		return false;
+		return weatherCondition.toLowerCase().contains("snow");
 	}
 }
