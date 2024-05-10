@@ -60,7 +60,7 @@ class RecommendationTest {
     public void testClothes() {
         // Test case 1
         String recommendation1 = Recommendation.clothes(30.0, "Sunny", 10.0);
-        assertEquals("It's a hot day! Wear something light like shorts and t-shirt.", recommendation1);
+        assertEquals("It's a hot day! Wear something light like shorts and t-shirt. I also recommend you to take the cap.", recommendation1);
 
         // Test case 2
         String recommendation3 = Recommendation.clothes(10.0, "Rainy", 5.0);
@@ -68,7 +68,7 @@ class RecommendationTest {
 
         // Test case 3
         String recommendation4 = Recommendation.clothes(0.0, "Snowy", 15.0);
-        assertEquals("It's cold! Wear something warm, like sweater & warm jacket. EXTRA RECOMENDATION :) It s snowing so go and build a snowman", recommendation4);
+        assertEquals("It's cold! Wear something warm, like sweater & warm jacket. EXTRA RECOMENDATION :) It s snowing, so try to build a snowman!!", recommendation4);
 
     }
 
