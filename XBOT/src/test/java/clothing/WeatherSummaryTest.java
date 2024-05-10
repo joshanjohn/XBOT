@@ -77,6 +77,7 @@ class WeatherSummaryTest {
 		assertFalse(WeatherSummary.isRaining("")); // Should return false
 
 	}
+
 	@Test
     public void testIsSunny() {
         // Test case 1: Weather condition contains "sunny"
@@ -87,6 +88,18 @@ class WeatherSummaryTest {
 
         // Test case 3: Weather condition is empty
         assertFalse(WeatherSummary.isSunny("")); // Should return false
+    }
+
+	@Test
+    public void testIsSnowy() {
+        // Test case 1: Weather condition contains "snow"
+        assertTrue(WeatherSummary.isSnowy("Heavy snowfall expected")); // Should return true
+
+        // Test case 2: Weather condition does not contain "snow"
+        assertFalse(WeatherSummary.isSnowy("Cold and clear")); // Should return false
+
+        // Test case 3: Weather condition is empty
+        assertFalse(WeatherSummary.isSnowy("")); // Should return false
     }
 
 }
