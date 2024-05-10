@@ -61,6 +61,7 @@ class TypingEffectTest {
         assertEquals(message, textArea.getText().trim());
     }
 
+
     @Test
     public void testProcess() {
         // Create a JTextArea for testing
